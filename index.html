@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FEL & Associates PC — legal services in Nairobi, Kenya." />
+  <title>FEL & Associates PC | Advocates & Legal Consultants</title>
+
+  <style>
+    :root{
+      --navy:#252a61;
+      --navy-deep:#171b46;
+      --gold:#d6a63b;
+      --gold-soft:#edcf83;
+      --lavender:#f3eff9;
+      --paper:#fbf9fd;
+      --ink:#24243a;
+      --muted:#6d6b7c;
+      --line:rgba(37,42,97,.12);
+      --white:#fff;
+      --shadow:0 24px 70px rgba(29,27,68,.13);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:var(--paper);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(1140px, calc(100% - 40px));margin:auto}
+
+    /* Navigation */
+    .nav-wrap{
+      position:fixed;
+      inset:18px 0 auto;
+      z-index:50;
+    }
+    nav{
+      width:min(1140px, calc(100% - 40px));
+      margin:auto;
+      padding:12px 16px 12px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(251,249,253,.88);
+      border:1px solid rgba(37,42,97,.09);
+      box-shadow:0 12px 38px rgba(30,27,68,.08);
+      backdrop-filter:blur(16px);
+      border-radius:999px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:var(--navy);
+    }
+    .brand-mark{
+      width:42px;height:42px;border-radius:50%;
+      display:grid;place-items:center;
+      background:var(--navy);
+      color:var(--gold-soft);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 7px 20px rgba(37,42,97,.18);
+    }
+    .brand-mark::before{
+      content:"⚖";
+      font-size:21px;
+      transform:translateY(-1px);
+    }
+    .brand small{
+      display:block;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.18em;
+      color:var(--gold);
+      margin-top:-2px;
+    }
+    .links{display:flex;align-items:center;gap:26px}
+    .links a{font-size:14px;font-weight:650;color:#4c4b5d}
+    .links a:hover{color:var(--navy)}
+    .nav-cta{
+      padding:10px 17px;
+      border-radius:999px;
+      background:var(--navy);
+      color:#fff !important;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:790px;
+      padding:155px 0 100px;
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:650px;height:650px;
+      left:-290px;top:-160px;
+      border-radius:50%;
+      background:rgba(37,42,97,.06);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:620px;height:620px;
+      right:-360px;bottom:-270px;
+      border-radius:50%;
+      background:rgba(214,166,59,.09);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      align-items:center;
+      gap:70px;
+      position:relative;
+      z-index:2;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--navy);
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:.18em;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+    .eyebrow::before{
+      content:"";
+      width:34px;height:2px;background:var(--gold);
+    }
+    h1{
+      margin:0;
+      max-width:720px;
+      color:var(--navy-deep);
+      font-size:clamp(48px, 6.6vw, 86px);
+      line-height:.96;
+      letter-spacing:-.055em;
+    }
+    h1 span{
+      color:var(--gold);
+      font-weight:500;
+    }
+    .hero-copy{
+      max-width:590px;
+      margin:28px 0 34px;
+      color:var(--muted);
+      font-size:18px;
+    }
+    .actions{display:flex;gap:13px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:50px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid var(--navy);
+      font-weight:750;
+      transition:.2s ease;
+    }
+    .btn.primary{background:var(--navy);color:#fff}
+    .btn.primary:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgba(37,42,97,.2)}
+    .btn.secondary{color:var(--navy);background:transparent}
+    .btn.secondary:hover{background:#fff}
+
+    /* Business card inspired panel */
+    .card-scene{
+      position:relative;
+      min-height:470px;
+      display:grid;
+      place-items:center;
+    }
+    .business-card{
+      width:min(520px, 100%);
+      aspect-ratio:1.75;
+      padding:36px 38px;
+      background:linear-gradient(135deg,#f7f1fa 0%,#fff 58%,#f1edf7 100%);
+      border:1px solid rgba(37,42,97,.1);
+      border-radius:9px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform:rotate(-4deg);
+      z-index:3;
+    }
+    .business-card::before{
+      content:"";
+      position:absolute;
+      width:230px;height:480px;
+      left:48%;top:-65px;
+      background:var(--navy);
+      clip-path:polygon(25% 0,100% 0,58% 100%,0 61%);
+      opacity:.98;
+    }
+    .business-card::after{
+      content:"";
+      position:absolute;
+      width:130px;height:430px;
+      left:59%;top:-40px;
+      background:var(--gold);
+      clip-path:polygon(15% 0,100% 0,47% 100%,0 62%);
+      opacity:.95;
+    }
+    .card-content{position:relative;z-index:4}
+    .card-kicker{
+      font-size:10px;
+      letter-spacing:.19em;
+      color:var(--gold);
+      font-weight:800;
+      margin-bottom:4px;
+    }
+    .card-name{
+      color:var(--navy);
+      font-size:clamp(30px,4vw,47px);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0;
+      font-weight:850;
+    }
+    .card-role{
+      margin-top:9px;
+      font-size:11px;
+      letter-spacing:.17em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:#6e6c79;
+    }
+    .card-divider{
+      width:80px;height:2px;background:var(--navy);margin:18px 0;
+    }
+    .card-firm{
+      position:absolute;
+      right:31px;top:35px;
+      z-index:5;
+      width:110px;
+      text-align:center;
+      color:var(--navy);
+      font-size:10px;
+      font-weight:900;
+      line-height:1.2;
+    }
+    .scales{
+      width:52px;height:52px;
+      margin:0 auto 6px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      display:grid;place-items:center;
+      font-size:25px;
+    }
+    .card-services{
+      position:absolute;
+      right:28px;
+      bottom:30px;
+      width:46%;
+      z-index:5;
+      color:var(--navy-deep);
+    }
+    .card-services strong{
+      display:block;
+      color:var(--gold);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      margin-bottom:7px;
+    }
+    .card-services li{
+      font-size:9px;
+      line-height:1.55;
+      margin:2px 0;
+    }
+    .back-card{
+      position:absolute;
+      width:min(500px,90%);
+      aspect-ratio:1.75;
+      border-radius:9px;
+      background:#ebe6f3;
+      border:1px solid rgba(37,42,97,.08);
+      transform:rotate(5deg) translate(24px,25px);
+      box-shadow:0 18px 50px rgba(30,27,68,.08);
+    }
+    .seal{
+      position:absolute;
+      left:2%;
+      bottom:2%;
+      width:105px;height:105px;
+      border-radius:50%;
+      border:1px solid rgba(214,166,59,.4);
+      background:rgba(255,255,255,.55);
+      display:grid;place-items:center;
+      color:var(--gold);
+      font-size:38px;
+      transform:rotate(4deg);
+      z-index:2;
+    }
+
+    /* Intro strip */
+    .strip{
+      background:var(--navy);
+      color:#fff;
+      padding:20px 0;
+      position:relative;
+      overflow:hidden;
+    }
+    .strip-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
+    }
+    .strip p{margin:0;color:rgba(255,255,255,.76);font-size:14px}
+    .strip strong{color:var(--gold-soft);font-size:16px}
+    .strip a{font-weight:800;font-size:13px;white-space:nowrap}
+
+    /* Sections */
+    section{padding:105px 0}
+    .section-head{max-width:700px;margin-bottom:46px}
+    .section-head h2{
+      margin:8px 0 15px;
+      font-size:clamp(34px,4.6vw,58px);
+      line-height:1;
+      letter-spacing:-.045em;
+      color:var(--navy-deep);
+    }
+    .section-head p{margin:0;color:var(--muted);font-size:17px}
+
+    .services{
+      background:#fff;
+    }
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:15px;
+    }
+    .service{
+      min-height:220px;
+      padding:27px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(145deg,#fff,#faf7fc);
+      transition:.25s ease;
+    }
+    .service:hover{
+      transform:translateY(-7px);
+      box-shadow:0 20px 45px rgba(37,42,97,.1);
+      border-color:rgba(214,166,59,.35);
+    }
+    .service-icon{
+      width:45px;height:45px;
+      display:grid;place-items:center;
+      border-radius:14px;
+      background:var(--lavender);
+      color:var(--navy);
+      font-size:19px;
+      margin-bottom:25px;
+    }
+    .service h3{margin:0 0 8px;color:var(--navy);font-size:17px}
+    .service p{margin:0;color:var(--muted);font-size:13px}
+
+    .about{
+      background:var(--lavender);
+      position:relative;
+      overflow:hidden;
+    }
+    .about-grid{
+      display:grid;
+      grid-template-columns:.85fr 1.15fr;
+      gap:80px;
+      align-items:center;
+    }
+    .seal-large{
+      width:min(390px,100%);
+      aspect-ratio:1;
+      border-radius:50%;
+      margin:auto;
+      border:1px solid rgba(37,42,97,.12);
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,.88) 0 45%, transparent 45.5%),
+        conic-gradient(from 220deg, rgba(37,42,97,.08), rgba(214,166,59,.18), rgba(37,42,97,.08));
+      display:grid;place-items:center;
+      position:relative;
+    }
+    .seal-large::before{
+      content:"JUSTICE • INTEGRITY • RESULTS";
+      position:absolute;
+      inset:28px;
+      border:1px dashed rgba(37,42,97,.25);
+      border-radius:50%;
+      display:grid;place-items:center;
+      text-align:center;
+      color:var(--navy);
+      font-size:11px;
+      letter-spacing:.16em;
+      font-weight:850;
+      padding:65px;
+    }
+    .seal-large span{
+      font-size:75px;
+      color:var(--gold);
+      position:relative;
+      z-index:2;
+    }
+    .about-copy h2{
+      margin:8px 0 18px;
+      font-size:clamp(35px,4vw,56px);
+      line-height:1;
+      letter-spacing:-.045em;
+      color:var(--navy-deep);
+    }
+    .about-copy p{color:var(--muted);font-size:16px}
+    .signature{
+      margin-top:27px;
+      display:flex;align-items:center;gap:14px;
+    }
+    .signature-line{width:62px;height:1px;background:var(--gold)}
+    .signature strong{font-family:Georgia,serif;color:var(--navy);font-size:18px}
+
+    .contact{
+      background:var(--navy-deep);
+      color:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    .contact::before{
+      content:"";
+      position:absolute;
+      width:620px;height:620px;
+      right:-330px;top:-300px;
+      border-radius:50%;
+      border:90px solid rgba(214,166,59,.08);
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:70px;
+      position:relative;
+      z-index:2;
+    }
+    .contact h2{
+      margin:8px 0 18px;
+      font-size:clamp(40px,5vw,64px);
+      line-height:.96;
+      letter-spacing:-.05em;
+    }
+    .contact p{color:rgba(255,255,255,.68);max-width:560px}
+    .contact-list{display:grid;gap:12px;margin-top:30px}
+    .contact-item{
+      display:flex;gap:15px;align-items:flex-start;
+      padding:16px 0;
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+    .contact-item .icon{
+      width:36px;height:36px;border-radius:50%;
+      display:grid;place-items:center;
+      background:rgba(214,166,59,.13);
+      color:var(--gold-soft);
+      flex:none;
+    }
+    .contact-item small{
+      display:block;
+      color:rgba(255,255,255,.48);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      margin-bottom:2px;
+    }
+    .contact-item a,.contact-item span{font-weight:700}
+    .contact-card{
+      align-self:center;
+      background:#fff;
+      color:var(--ink);
+      border-radius:26px;
+      padding:34px;
+      box-shadow:0 25px 80px rgba(0,0,0,.2);
+    }
+    .contact-card h3{margin:0;color:var(--navy);font-size:24px}
+    .contact-card p{color:var(--muted);font-size:14px;margin:7px 0 22px}
+    .contact-card .btn{width:100%;margin-top:10px}
+    footer{
+      padding:25px 0;
+      background:#121536;
+      color:rgba(255,255,255,.45);
+      font-size:12px;
+    }
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    .footer-inner strong{color:rgba(255,255,255,.75)}
+
+    @media (max-width: 900px){
+      .links a:not(.nav-cta){display:none}
+      .hero{padding-top:125px}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .hero-grid{gap:35px}
+      .card-scene{min-height:430px}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid{gap:45px}
+    }
+    @media (max-width: 600px){
+      .container{width:min(100% - 28px,1140px)}
+      nav{width:calc(100% - 22px);padding-left:14px}
+      .brand-mark{width:37px;height:37px}
+      .nav-cta{padding:9px 13px}
+      .hero{min-height:auto;padding:120px 0 70px}
+      h1{font-size:52px}
+      .hero-copy{font-size:16px}
+      .card-scene{min-height:310px}
+      .business-card{padding:24px 22px}
+      .card-services{right:17px;bottom:18px;width:45%}
+      .card-firm{right:18px;top:19px;transform:scale(.82);transform-origin:top right}
+      .card-name{font-size:30px}
+      .service-grid{grid-template-columns:1fr}
+      .service{min-height:auto}
+      section{padding:75px 0}
+      .strip-inner{align-items:flex-start;flex-direction:column;gap:7px}
+      .seal-large{width:280px}
+      .contact-card{padding:25px}
+      .footer-inner{flex-direction:column}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav-wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="FEL and Associates home">
+        <span class="brand-mark"></span>
+        <span>
+          FEL & ASSOCIATES PC
+          <small>LEGAL • ADVOCACY • COUNSEL</small>
+        </span>
+      </a>
+      <div class="links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">C</a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Trusted legal counsel in Kenya</div>
+          <h1>Clarity in law.<br><span>Confidence</span> in action.</h1>
+          <p class="hero-copy">
+            FEL & Associates PC provides practical, client-focused legal services
+            across litigation, business, property, family, employment and dispute resolution.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#contact">Speak with us</a>
+            <a class="btn secondary" href="#services">Explore services</a>
+          </div>
+        </div>
+
+        <div class="card-scene" aria-label="Business-card inspired visual">
+          <div class="back-card"></div>
+          <div class="business-card">
+            <div class="card-content">
+              <div class="card-kicker">FEL & ASSOCIATES PC</div>
+              <h2 class="card-name">FEL MBAYA</h2>
+              <div class="card-role">Chief Executive Officer</div>
+              <div class="card-divider"></div>
+              <div style="font-size:11px;color:#686778;max-width:185px">
+                Professional legal counsel with a practical, strategic approach.
+              </div>
+            </div>
+
+            <div class="card-firm">
+              <div class="scales">⚖</div>
+              FEL & ASSOCIATES PC
+            </div>
+
+            <div class="card-services">
+              <strong>Our legal services include</strong>
+              <ul style="padding-left:15px;margin:0">
+                <li>Civil & Commercial Litigation</li>
+                <li>Corporate & Business Law</li>
+                <li>Real Estate & Property Law</li>
+                <li>Family & Succession Matters</li>
+                <li>Employment & Labour Relations</li>
+                <li>Criminal Defense</li>
+                <li>Contract & Legal Documentation</li>
+                <li>Arbitration & Mediation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="seal">⚖</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="container strip-inner">
+        <p><strong>Nairobi, Kenya</strong> &nbsp;•&nbsp; Strategic legal representation and advisory</p>
+        <a href="mailto:felandassociatespc@gmail.com">felandassociatespc@gmail.com →</a>
+      </div>
+    </div>
+
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What we do</div>
+          <h2>Legal expertise built around your needs.</h2>
+          <p>
+            From resolving disputes to protecting your business and property,
+            our practice is designed to give clients clear advice and decisive representation.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service">
+            <div class="service-icon">§</div>
+            <h3>Civil & Commercial Litigation</h3>
+            <p>Representation and strategic guidance for civil and commercial disputes.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">⌂</div>
+            <h3>Corporate & Business Law</h3>
+            <p>Legal support for businesses, transactions, governance and commercial matters.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">◆</div>
+            <h3>Real Estate & Property</h3>
+            <p>Advice and documentation around property, ownership and real estate transactions.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">∞</div>
+            <h3>Family & Succession</h3>
+            <p>Thoughtful legal guidance for family, inheritance and succession matters.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">◌</div>
+            <h3>Employment & Labour</h3>
+            <p>Advice on workplace relationships, employment obligations and disputes.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">⚔</div>
+            <h3>Criminal Defense</h3>
+            <p>Focused legal representation and advocacy in criminal proceedings.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">▤</div>
+            <h3>Contracts & Documentation</h3>
+            <p>Clear, commercially minded contracts and supporting legal documentation.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon">↔</div>
+            <h3>Arbitration & Mediation</h3>
+            <p>Alternative dispute resolution focused on efficient and constructive outcomes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="seal-large"><span>⚖</span></div>
+        <div class="about-copy">
+          <div class="eyebrow">About the practice</div>
+          <h2>Professional. Personal. Precise.</h2>
+          <p>
+            FEL & Associates PC is presented as a modern legal practice with the
+            confidence of a traditional law firm.
+          </p>
+          <p>
+            Our approach is simple: understand the issue, explain the options clearly,
+            and help clients move forward with confidence.
+          </p>
+          <div class="signature">
+            <span class="signature-line"></span>
+            <strong>Fel Mbaya</strong>
+            <span style="color:#777;font-size:13px">CEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-soft)">Get in touch</div>
+          <h2>Let’s discuss<br>your legal matter.</h2>
+          <p>
+            Reach out to FEL & Associates PC for an initial conversation about
+            your legal needs, representation or advisory requirements.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon">☎</div>
+              <div>
+                <small>Phone</small>
+                <a href="tel:+254116090356">+254 116 090 356</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">✉</div>
+              <div>
+                <small>Email</small>
+                <a href="mailto:felandassociatespc@gmail.com">felandassociatespc@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="icon">⌖</div>
+              <div>
+                <small>Location</small>
+                <span>Nairobi, Kenya</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Start a conversation</h3>
+          <p>
+            Send an email or call directly. We’ll help point you toward the right
+            legal service for your matter.
+          </p>
+          <a class="btn primary" href="mailto:felandassociatespc@gmail.com?subject=Legal%20Enquiry">
+            Email
+          </a>
+          <a class="btn secondary" href="tel:+254116090356">
+            Call
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> <strong>FEL & Associates PC</strong>. All rights reserved.</div>
+      <div>Nairobi, Kenya • Legal Services</div>
+    </div>
+  </footer>
+  <script src="images.js"></script>
+  <script src="contact.js"></script>
+<script src="spts-global-pop.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Small reveal animation without any external library.
+    const items = document.querySelectorAll(".service, .about-copy, .contact-card");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.animate(
+          [
+            { opacity: 0, transform: "translateY(18px)" },
+            { opacity: 1, transform: "translateY(0)" }
+          ],
+          { duration: 650, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" }
+        );
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .12 });
+
+    items.forEach(item => {
+      item.style.opacity = "0";
+      observer.observe(item);
+    });
+  </script>
+<script>
+  (function() {
+ // --- Find the footer ---
+    const footer = document.querySelector('footer .footer-inner');
+    if (!footer) {
+      console.warn('Footer not found, creating social section at bottom of page');
+      // Fallback: create a social bar at the bottom
+      createSocialBarAtBottom();
+      return;
+    }
+
+    // --- Create social links container for footer ---
+    const socialWrapper = document.createElement('div');
+    socialWrapper.style.cssText = `
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    `;
+
+    // --- Helper: create social link with SVG icon ---
+    function createSocialLink(platform, href, label, color, bgColor = 'transparent') {
+      const a = document.createElement('a');
+      a.href = href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.setAttribute('aria-label', label);
+      a.style.cssText = `
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        transition: all 0.25s ease;
+        color: ${color};
+        background: ${bgColor};
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.15);
+        flex-shrink: 0;
+      `;
+      a.addEventListener('mouseenter', () => {
+        a.style.transform = 'scale(1.12)';
+        a.style.borderColor = color;
+        if (bgColor === 'transparent') {
+          a.style.background = 'rgba(255,255,255,0.08)';
+        }
+      });
+      a.addEventListener('mouseleave', () => {
+        a.style.transform = 'scale(1)';
+        if (bgColor === 'transparent') {
+          a.style.background = 'transparent';
+        }
+        a.style.borderColor = 'rgba(255,255,255,0.15)';
+      });
+
+      // SVG Icon
+      let svg = '';
+      switch (platform) {
+        case 'x':
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4 L20 20 M20 4 L4 20"/></svg>`;
+          break;
+        case 'whatsapp':
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+          break;
+        case 'instagram':
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
+          break;
+        default:
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+      }
+
+      const span = document.createElement('span');
+      span.innerHTML = svg;
+      span.style.cssText = 'display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;';
+      a.appendChild(span);
+
+      // Add tooltip / label
+      const tooltip = document.createElement('span');
+      tooltip.textContent = label;
+      tooltip.style.cssText = `
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.85);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        font-family: system-ui, -apple-system, sans-serif;
+      `;
+      a.style.position = 'relative';
+      a.appendChild(tooltip);
+
+      a.addEventListener('mouseenter', () => { tooltip.style.opacity = '1'; });
+      a.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; });
+
+      return a;
+    }
+
+    // --- Social links configuration ---
+    const socialConfigs = [
+      {
+        platform: 'x',
+        href: 'https://x.com/f_tigel?s=11',
+        label: 'X (Twitter)',
+        color: '#ffffff',
+        bg: 'transparent'
+      },
+      {
+        platform: 'whatsapp',
+        href: 'https://wa.me/254716090356?text=Hello%20FEL%20%26%20Associates%2C%20I%20would%20like%20to%20inquire%20about%20legal%20services.',
+        label: 'WhatsApp',
+        color: '#25D366',
+        bg: 'transparent'
+      },
+      {
+        platform: 'instagram',
+        href: 'https://instagram.com/felandassociates',
+        label: 'Instagram',
+        color: '#E4405F',
+        bg: 'transparent'
+      }
+    ];
+
+    // Build social links
+    socialConfigs.forEach(cfg => {
+      const link = createSocialLink(cfg.platform, cfg.href, cfg.label, cfg.color, cfg.bg);
+      socialWrapper.appendChild(link);
+    });
+
+    // --- Add a label "Connect with us" before the icons ---
+    const labelSpan = document.createElement('span');
+    labelSpan.textContent = 'Connect';
+    labelSpan.style.cssText = `
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-right: 4px;
+    `;
+    socialWrapper.prepend(labelSpan);
+
+    // --- Add a subtle separator ---
+    const sep = document.createElement('span');
+    sep.textContent = '•';
+    sep.style.cssText = `
+      color: rgba(255,255,255,0.2);
+      font-size: 14px;
+      margin: 0 2px;
+    `;
+    labelSpan.after(sep);
+
+    // --- Insert social wrapper into footer ---
+    // Keep the existing footer content (copyright and location)
+    // We'll place social links between the copyright and location, or at the end
+
+    // Get existing children
+    const children = Array.from(footer.children);
+    // If there are two child divs, insert between them
+    if (children.length >= 2) {
+      footer.insertBefore(socialWrapper, children[1]);
+    } else {
+      footer.appendChild(socialWrapper);
+    }
+
+    // --- Add some spacing and style improvements to footer ---
+    footer.style.cssText = `
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+    `;
+
+    // Style the existing footer text
+    const footerTexts = footer.querySelectorAll('div:not([style*="display: flex"])');
+    footerTexts.forEach(el => {
+      if (el.textContent.includes('©') || el.textContent.includes('Nairobi')) {
+        el.style.color = 'rgba(255,255,255,0.5)';
+        el.style.fontSize = '12px';
+        el.style.fontWeight = '400';
+      }
+    });
+
+    // --- Get one for my ig x and whatsappp.
+
+    // --- For mobile: stack footer items ---
+    if (window.innerWidth < 600) {
+      footer.style.flexDirection = 'column';
+      footer.style.alignItems = 'center';
+      footer.style.textAlign = 'center';
+      socialWrapper.style.justifyContent = 'center';
+    }
+
+    console.log('✅ FEL & Associates: Social links (X, WhatsApp, Instagram) added to footer.');
+    console.log('   Instagram added successfully.');
+
+    // --- Fallback: if footer doesn't exist, create a social bar at bottom ---
+    function createSocialBarAtBottom() {
+      const bar = document.createElement('div');
+      bar.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(18, 21, 54, 0.92);
+        backdrop-filter: blur(12px);
+        padding: 10px 22px;
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        z-index: 999;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      `;
+      // Recreate social links in this bar
+      const socialConfigsFallback = [
+        {
+          platform: 'x',
+          href: 'https://x.com/intent/tweet?text=Legal%20services%20in%20Nairobi%20-%20FEL%20%26%20Associates%20PC',
+          label: 'X',
+          color: '#ffffff'
+        },
+        {
+          platform: 'whatsapp',
+          href: 'https://wa.me/254116090356?text=Hello%20FEL%20%26%20Associates',
+          label: 'WhatsApp',
+          color: '#25D366'
+        },
+        {
+          platform: 'instagram',
+          href: 'https://www.instagram.com/fel.associates?igsh=MWJ4aGxjcW9tNWM5cQ==',
+          label: 'Instagram',
+          color: '#E4405F'
+        }
+      ];
+
+      socialConfigsFallback.forEach(cfg => {
+        const a = document.createElement('a');
+        a.href = cfg.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.setAttribute('aria-label', cfg.label);
+        a.style.cssText = `
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          color: ${cfg.color};
+          background: rgba(255,255,255,0.06);
+          transition: all 0.2s ease;
+          text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.1);
+        `;
+        a.addEventListener('mouseenter', () => {
+          a.style.transform = 'scale(1.1)';
+          a.style.background = 'rgba(255,255,255,0.15)';
+        });
+        a.addEventListener('mouseleave', () => {
+          a.style.transform = 'scale(1)';
+          a.style.background = 'rgba(255,255,255,0.06)';
+        });
+
+        let svg = '';
+        if (cfg.platform === 'x') {
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4 L20 20 M20 4 L4 20"/></svg>`;
+        } else if (cfg.platform === 'whatsapp') {
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+        } else if (cfg.platform === 'instagram') {
+          svg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
+        }
+        const span = document.createElement('span');
+        span.innerHTML = svg;
+        span.style.cssText = 'display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;';
+        a.appendChild(span);
+        bar.appendChild(a);
+      });
+
+      // Add label
+      const label = document.createElement('span');
+      label.textContent = 'Connect';
+      label.style.cssText = `
+        color: rgba(255,255,255,0.5);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-right: 4px;
+      `;
+      bar.prepend(label);
+      const sep = document.createElement('span');
+      sep.textContent = '•';
+      sep.style.cssText = 'color: rgba(255,255,255,0.15); margin: 0 4px;';
+      label.after(sep);
+
+      document.body.appendChild(bar);
+      console.log('✅ Fallback: Social bar created at bottom of page.');
+    }
+
+  })();
+</script>
+<script>
+  // ============================================================
+  //  FEL & Associates AI  ============================================================
+
+  (function() {
+    'use strict';
+
+    // --- Configuration ---
+    const ASSISTANT_NAME = 'Felicity';
+    const ASSISTANT_TITLE = 'Your Legal AI Assistant';
+    const KNOWLEDGE_FILE = 'ai.txt';
+
+    // --- State ---
+    let knowledgeBase = [];
+    let isKnowledgeLoaded = false;
+    let isOpen = false;
+    let isInitialized = false;
+
+    // --- DOM Elements ---
+    let chatContainer = null;
+    let chatToggle = null;
+    let chatMessages = null;
+    let chatInput = null;
+    let chatSendBtn = null;
+    let loadingIndicator = null;
+
+    // --- Theme (matches website) ---
+    const theme = {
+      navy: '#252a61',
+      navyDeep: '#171b46',
+      gold: '#d6a63b',
+      goldSoft: '#edcf83',
+      lavender: '#f3eff9',
+      paper: '#fbf9fd',
+      ink: '#24243a',
+      muted: '#6d6b7c',
+      white: '#ffffff',
+      shadow: '0 24px 70px rgba(29,27,68,.13)'
+    };
+
+    // --- Fallback knowledge ---
+    function getFallbackKnowledge() {
+      return [
+        {
+          question: 'who are you',
+          answers: [`I'm ${ASSISTANT_NAME}, your AI assistant at FEL & Associates PC. I'm here to help you learn about our legal services in Nairobi, Kenya.`]
+        },
+        {
+          question: 'what services do you offer',
+          answers: [
+            'FEL & Associates PC provides a wide range of legal services including:',
+            '• Civil & Commercial Litigation',
+            '• Corporate & Business Law',
+            '• Real Estate & Property Law',
+            '• Family & Succession Matters',
+            '• Employment & Labour Relations',
+            '• Criminal Defense',
+            '• Contracts & Legal Documentation',
+            '• Arbitration & Mediation'
+          ]
+        },
+        {
+          question: 'where are you located',
+          answers: ['We are based in Nairobi, Kenya, serving clients across the country.']
+        },
+        {
+          question: 'how can i contact you',
+          answers: [
+            'You can reach us via:',
+            '📞 Phone: +254 116 090 356',
+            '✉️ Email: felandassociatespc@gmail.com'
+          ]
+        },
+        {
+          question: 'who is fel mbaya',
+          answers: ['Fel Mbaya is the Chief Executive Officer (CEO) of FEL & Associates PC.']
+        },
+        {
+          question: 'hello',
+          answers: [`Hello! I'm ${ASSISTANT_NAME}, your AI assistant at FEL & Associates PC. How can I help you today?`]
+        },
+        {
+          question: 'hi',
+          answers: [`Hi there! I'm ${ASSISTANT_NAME}, your legal AI assistant. What would you like to know about FEL & Associates PC?`]
+        }
+      ];
+    }
+
+    // --- Parse ai.txt ---
+    function parseKnowledge(text) {
+      const entries = [];
+      const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+
+      let currentQuestion = null;
+      let currentAnswers = [];
+
+      for (const line of lines) {
+        const isQuestion = line.match(/^Q:/i) || line.match(/\?$/) || (line.match(/^[A-Z]/) && line.length < 80);
+
+        if (isQuestion && currentQuestion !== null) {
+          if (currentQuestion && currentAnswers.length > 0) {
+            entries.push({
+              question: currentQuestion.toLowerCase().replace(/^q:\s*/i, '').trim(),
+              answers: currentAnswers
+            });
+          }
+          currentQuestion = line.replace(/^Q:\s*/i, '').trim();
+          currentAnswers = [];
+        } else if (isQuestion && currentQuestion === null) {
+          currentQuestion = line.replace(/^Q:\s*/i, '').trim();
+          currentAnswers = [];
+        } else if (currentQuestion !== null) {
+          if (line.startsWith('A:') || line.startsWith('- ') || line.startsWith('• ')) {
+            currentAnswers.push(line.replace(/^[A-]:\s*|^[-•]\s*/, '').trim());
+          } else {
+            currentAnswers.push(line);
+          }
+        }
+      }
+
+      if (currentQuestion && currentAnswers.length > 0) {
+        entries.push({
+          question: currentQuestion.toLowerCase().replace(/^q:\s*/i, '').trim(),
+          answers: currentAnswers
+        });
+      }
+
+      return entries;
+    }
+
+    // --- Load knowledge ---
+    async function loadKnowledge() {
+      try {
+        const response = await fetch(KNOWLEDGE_FILE);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const text = await response.text();
+        knowledgeBase = parseKnowledge(text);
+        isKnowledgeLoaded = true;
+        console.log(`✅ ${ASSISTANT_NAME} loaded ${knowledgeBase.length} entries.`);
+      } catch (error) {
+        console.warn(`⚠️ Could not load ${KNOWLEDGE_FILE}, using fallback.`);
+        knowledgeBase = getFallbackKnowledge();
+        isKnowledgeLoaded = true;
+      }
+    }
+
+    // --- Find answer ---
+    function findAnswer(userQuestion) {
+      const q = userQuestion.toLowerCase().trim();
+
+      if (q.length < 2) {
+        return [`Hi! I'm ${ASSISTANT_NAME}. Could you please ask me something about FEL & Associates PC?`];
+      }
+
+      // Check greetings
+      const greetings = ['rada','mambo','vipi','whatsup','hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'];
+      if (greetings.some(g => q.includes(g))) {
+        const greetingAnswers = knowledgeBase.filter(entry =>
+          entry.question.includes('hello') || entry.question.includes('hi')
+        );
+        if (greetingAnswers.length > 0) {
+          return greetingAnswers[0].answers;
+        }
+      }
+
+      // Find best match
+      let bestMatch = null;
+      let bestScore = 0;
+
+      for (const entry of knowledgeBase) {
+        const questionWords = entry.question.split(/\s+/);
+        const queryWords = q.split(/\s+/);
+
+        let matches = 0;
+        for (const word of queryWords) {
+          if (word.length < 3) continue;
+          if (entry.question.includes(word)) matches++;
+        }
+
+        const score = matches / Math.max(questionWords.length, 1);
+        if (score > bestScore) {
+          bestScore = score;
+          bestMatch = entry;
+        }
+
+        if (entry.question.split(/\s+/).some(w => w.length > 3 && q.includes(w))) {
+          const bonus = 0.3;
+          if (score + bonus > bestScore) {
+            bestScore = score + bonus;
+            bestMatch = entry;
+          }
+        }
+      }
+
+      if (bestMatch && bestScore > 0.15) {
+        return bestMatch.answers;
+      }
+
+      return [
+        `I'm not quite sure about that. Here's what I know about FEL & Associates PC:`,
+        `• We're a legal practice based in Nairobi, Kenya.`,
+        `• We offer services in litigation, business, property, family, employment, and more.`,
+        `• You can reach us at +254 116 090 356 or felandassociatespc@gmail.com`,
+        `Could you rephrase your question? I'm here to help!`
+      ];
+    }
+
+    // --- Display message ---
+    function displayMessage(content, sender) {
+      if (!chatMessages) return;
+
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+      }
+
+      const msgDiv = document.createElement('div');
+      msgDiv.style.cssText = `
+        margin: 6px 0;
+        padding: 10px 16px;
+        border-radius: 16px;
+        max-width: 80%;
+        word-wrap: break-word;
+        font-size: 14px;
+        line-height: 1.6;
+        animation: fadeInUp 0.35s ease forwards;
+      `;
+
+      // Add animation
+      if (!document.getElementById('chat-animations')) {
+        const style = document.createElement('style');
+        style.id = 'chat-animations';
+        style.textContent = `
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      if (sender === 'user') {
+        msgDiv.style.background = theme.navy;
+        msgDiv.style.color = theme.white;
+        msgDiv.style.alignSelf = 'flex-end';
+        msgDiv.style.borderRadius = '16px 16px 4px 16px';
+        msgDiv.style.marginLeft = 'auto';
+      } else {
+        msgDiv.style.background = theme.lavender;
+        msgDiv.style.color = theme.ink;
+        msgDiv.style.alignSelf = 'flex-start';
+        msgDiv.style.borderRadius = '16px 16px 16px 4px';
+        msgDiv.style.marginRight = 'auto';
+
+        if (content.includes('•')) {
+          msgDiv.innerHTML = content
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0)
+            .map(line => {
+              if (line.startsWith('•')) {
+                return `<span style="display:block;padding-left:8px;">${line}</span>`;
+              }
+              return line;
+            })
+            .join('<br>');
+        } else {
+          msgDiv.textContent = content;
+        }
+      }
+
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // --- Send message ---
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      chatInput.value = '';
+      displayMessage(text, 'user');
+
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'block';
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 400 + Math.random() * 400));
+
+      const answers = findAnswer(text);
+
+      if (loadingIndicator) {
+        loadingIndicator.style.display = 'none';
+      }
+
+      const responseText = Array.isArray(answers) ? answers.join('\n') : answers;
+      displayMessage(responseText, 'assistant');
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // --- Create Chat UI (called immediately) ---
+    function createChatUI() {
+      // --- Toggle Button ---
+      chatToggle = document.createElement('button');
+      chatToggle.setAttribute('aria-label', `Chat with ${ASSISTANT_NAME}`);
+      chatToggle.style.cssText = `
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, ${theme.navy}, ${theme.navyDeep});
+        color: ${theme.white};
+        border: none;
+        box-shadow: 0 8px 30px rgba(37,42,97,.35);
+        cursor: pointer;
+        font-size: 28px;
+        z-index: 10000;
+        transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `;
+      chatToggle.innerHTML = '⚖';
+      chatToggle.addEventListener('mouseenter', () => {
+        chatToggle.style.transform = 'scale(1.08)';
+        chatToggle.style.boxShadow = '0 12px 40px rgba(37,42,97,.45)';
+      });
+      chatToggle.addEventListener('mouseleave', () => {
+        chatToggle.style.transform = 'scale(1)';
+        chatToggle.style.boxShadow = '0 8px 30px rgba(37,42,97,.35)';
+      });
+      chatToggle.addEventListener('click', toggleChat);
+      document.body.appendChild(chatToggle);
+
+      // --- Chat Container ---
+      chatContainer = document.createElement('div');
+      chatContainer.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 24px;
+        width: 380px;
+        max-width: calc(100vw - 48px);
+        max-height: 560px;
+        background: ${theme.white};
+        border-radius: 24px;
+        box-shadow: ${theme.shadow};
+        border: 1px solid rgba(37,42,97,.08);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 9999;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      `;
+      document.body.appendChild(chatContainer);
+
+      // --- Header ---
+      const chatHeader = document.createElement('div');
+      chatHeader.style.cssText = `
+        padding: 16px 20px;
+        background: linear-gradient(135deg, ${theme.navy}, ${theme.navyDeep});
+        color: ${theme.white};
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+        border-bottom: 2px solid ${theme.gold};
+      `;
+      chatHeader.innerHTML = `
+        <div style="
+          width: 38px; height: 38px;
+          border-radius: 50%;
+          background: ${theme.gold};
+          color: ${theme.navy};
+          display: grid;
+          place-items: center;
+          font-size: 18px;
+          font-weight: 800;
+          flex-shrink: 0;
+        ">⚖</div>
+        <div style="flex:1; min-width:0;">
+          <div style="font-weight: 700; font-size: 15px; letter-spacing: -0.01em;">${ASSISTANT_NAME}</div>
+          <div style="font-size: 11px; opacity: 0.7; font-weight: 400;">${ASSISTANT_TITLE}</div>
+        </div>
+        <button id="chat-close-btn" style="
+          background: rgba(255,255,255,0.1);
+          border: none;
+          color: ${theme.white};
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          cursor: pointer;
+          font-size: 16px;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        ">✕</button>
+      `;
+      chatContainer.appendChild(chatHeader);
+      chatHeader.querySelector('#chat-close-btn').addEventListener('click', closeChat);
+
+      // --- Messages ---
+      chatMessages = document.createElement('div');
+      chatMessages.style.cssText = `
+        flex: 1;
+        overflow-y: auto;
+        padding: 16px 18px;
+        background: ${theme.paper};
+        min-height: 200px;
+        max-height: 380px;
+      `;
+      chatContainer.appendChild(chatMessages);
+
+      // --- Loading ---
+      loadingIndicator = document.createElement('div');
+      loadingIndicator.style.cssText = `
+        display: none;
+        padding: 10px 14px;
+        background: ${theme.lavender};
+        border-radius: 16px 16px 16px 4px;
+        margin: 6px 0;
+        font-size: 13px;
+        color: ${theme.muted};
+        align-self: flex-start;
+        max-width: 80%;
+      `;
+      loadingIndicator.textContent = `${ASSISTANT_NAME} is thinking...`;
+      chatMessages.appendChild(loadingIndicator);
+
+      // --- Input ---
+      const inputArea = document.createElement('div');
+      inputArea.style.cssText = `
+        padding: 12px 16px;
+        border-top: 1px solid rgba(37,42,97,.08);
+        display: flex;
+        gap: 10px;
+        background: ${theme.white};
+        flex-shrink: 0;
+      `;
+      chatContainer.appendChild(inputArea);
+
+      chatInput = document.createElement('input');
+      chatInput.type = 'text';
+      chatInput.placeholder = `Ask ${ASSISTANT_NAME} about FEL & Associates...`;
+      chatInput.style.cssText = `
+        flex: 1;
+        padding: 10px 16px;
+        border: 1px solid rgba(37,42,97,.12);
+        border-radius: 999px;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        background: ${theme.paper};
+        color: ${theme.ink};
+      `;
+      chatInput.addEventListener('focus', () => {
+        chatInput.style.borderColor = theme.gold;
+        chatInput.style.boxShadow = `0 0 0 3px ${theme.goldSoft}40`;
+      });
+      chatInput.addEventListener('blur', () => {
+        chatInput.style.borderColor = 'rgba(37,42,97,.12)';
+        chatInput.style.boxShadow = 'none';
+      });
+      chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') sendMessage();
+      });
+      inputArea.appendChild(chatInput);
+
+      chatSendBtn = document.createElement('button');
+      chatSendBtn.textContent = 'Send';
+      chatSendBtn.style.cssText = `
+        padding: 10px 20px;
+        border: none;
+        border-radius: 999px;
+        background: ${theme.navy};
+        color: ${theme.white};
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        font-family: inherit;
+      `;
+      chatSendBtn.addEventListener('mouseenter', () => {
+        chatSendBtn.style.transform = 'translateY(-2px)';
+        chatSendBtn.style.boxShadow = '0 8px 20px rgba(37,42,97,.25)';
+      });
+      chatSendBtn.addEventListener('mouseleave', () => {
+        chatSendBtn.style.transform = 'translateY(0)';
+        chatSendBtn.style.boxShadow = 'none';
+      });
+      chatSendBtn.addEventListener('click', sendMessage);
+      inputArea.appendChild(chatSendBtn);
+
+      // --- Welcome message ---
+      setTimeout(() => {
+        const welcomeMsg = [
+          `👋 Welcome to FEL & Associates PC!`,
+          `I'm ${ASSISTANT_NAME}, your AI assistant.`,
+          `I can tell you about our legal services, location, team, and how to reach us.`,
+          `What would you like to know?`
+        ];
+        displayMessage(welcomeMsg.join(' '), 'assistant');
+      }, 500);
+
+      console.log(`✅ ${ASSISTANT_NAME} chat UI created.`);
+    }
+
+    // --- Toggle chat ---
+    function toggleChat() {
+      if (isOpen) {
+        closeChat();
+      } else {
+        openChat();
+      }
+    }
+
+    function openChat() {
+      if (!chatContainer) return;
+      chatContainer.style.display = 'flex';
+      isOpen = true;
+      chatToggle.innerHTML = '✕';
+      setTimeout(() => chatInput && chatInput.focus(), 300);
+    }
+
+    function closeChat() {
+      if (!chatContainer) return;
+      chatContainer.style.display = 'none';
+      isOpen = false;
+      chatToggle.innerHTML = '⚖';
+    }
+
+    // --- Handle resize ---
+    function handleResize() {
+      if (chatContainer) {
+        if (window.innerWidth < 500) {
+          chatContainer.style.width = 'calc(100vw - 32px)';
+          chatContainer.style.right = '16px';
+          chatContainer.style.bottom = '90px';
+          chatContainer.style.maxHeight = 'calc(100vh - 160px)';
+        } else {
+          chatContainer.style.width = '380px';
+          chatContainer.style.right = '24px';
+          chatContainer.style.bottom = '100px';
+          chatContainer.style.maxHeight = '560px';
+        }
+      }
+    }
+
+    // --- Init ---
+    function init() {
+      // Create UI immediately
+      createChatUI();
+      handleResize();
+      window.addEventListener('resize', handleResize);
+
+      // Load knowledge in background
+      loadKnowledge().then(() => {
+        console.log(`✅ Knowledge loaded: ${knowledgeBase.length} entries`);
+      });
+    }
+
+    // Start
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  })();
+</script>
+  <script>
+// ============================================================
+//  FEL & Associates - Professional Legal Resources & Messaging ============================================================
+
+(function() {
+  'use strict';
+
+  // --- FIREBASE CONFIG ---
+  const firebaseConfig = {
+    apiKey: "27ghsdd",
+    authDomain: "fel-assoc.firebaseapp.com",
+    projectId: "fel_6op",
+    storageBucket: "1p_fel.appspot.com",
+    messagingSenderId: "62737gshhssh",
+    appId: "28hdhhfel"
+  };
+
+  // --- State ---
+  let db = null;
+  let firebaseReady = false;
+  let isOpen = false;
+  let currentTab = 'resources';
+  let deviceId = localStorage.getItem('fel_device_id') || 'dev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+  localStorage.setItem('fel_device_id', deviceId);
+  let convId = localStorage.getItem('fel_conv_id') || 'conv_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+  localStorage.setItem('fel_conv_id', convId);
+
+  // --- DOM refs ---
+  let modal, overlay, closeBtn, tabBtns, tabPanels, msgInput, sendBtn, chatMessages, statusBadge;
+
+  // --- SVG Icons (professional, no emojis) ---
+  const ICONS = {
+    scales: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L12 22"/><path d="M4 6L20 6"/><path d="M4 18L20 18"/><path d="M8 6L8 22"/><path d="M16 6L16 22"/><path d="M4 6L8 6"/><path d="M16 6L20 6"/><path d="M8 22L16 22"/></svg>`,
+    book: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`,
+    gavel: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12L12 16L20 8"/><path d="M12 16L10 18"/><path d="M14 14L12 16"/><path d="M17 11L15 13"/><path d="M20 8L18 10"/></svg>`,
+    building: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="18"/><line x1="15" y1="22" x2="15" y2="18"/><line x1="9" y1="14" x2="9" y2="10"/><line x1="15" y1="14" x2="15" y2="10"/></svg>`,
+    shield: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
+    newspaper: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>`,
+    users: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    send: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`,
+    close: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+    arrow: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`,
+    message: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    online: `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>`
+  };
+
+  // --- Resource data (professional, no emojis) ---
+  const RESOURCES = [
+    { icon: 'book', title: 'Kenya Law Reports', desc: 'Access to case law, statutes, and legal judgments from Kenyan courts.', link: 'http://www.kenyalaw.org' },
+    { icon: 'gavel', title: 'Constitution of Kenya 2010', desc: 'Full text of the Kenyan Constitution with amendments.', link: 'http://www.kenyalaw.org/lex/actview.xql?actid=Const2010' },
+    { icon: 'building', title: 'Judiciary of Kenya', desc: 'Official portal for Kenyan courts, judgments, and judicial services.', link: 'http://www.judiciary.go.ke' },
+    { icon: 'shield', title: 'Legal Aid & Pro Bono', desc: 'Resources for free legal assistance and pro bono services in Kenya.', link: 'http://www.nationallegalaid.go.ke' },
+    { icon: 'newspaper', title: 'Kenya Gazette', desc: 'Official government publication for legal notices and regulations.', link: 'http://www.kenyagazette.go.ke' },
+    { icon: 'users', title: 'Law Society of Kenya', desc: 'Professional body for advocates in Kenya - find a lawyer.', link: 'http://www.lsk.or.ke' }
+  ];
+
+  // --- Init Firebase ---
+  function initFirebase() {
+    try {
+      if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore();
+        firebaseReady = true;
+        console.log('Firebase initialized');
+      } else if (typeof firebase !== 'undefined' && firebase.apps.length) {
+        db = firebase.firestore();
+        firebaseReady = true;
+        console.log('Firebase already initialized');
+      }
+    } catch (e) {
+      console.warn('Firebase error:', e.message);
+    }
+  }
+
+  // --- Get icon HTML ---
+  function getIcon(name, size = 18) {
+    const iconMap = {
+      book: ICONS.book,
+      gavel: ICONS.gavel,
+      building: ICONS.building,
+      shield: ICONS.shield,
+      newspaper: ICONS.newspaper,
+      users: ICONS.users,
+      scales: ICONS.scales,
+      send: ICONS.send,
+      close: ICONS.close,
+      arrow: ICONS.arrow,
+      message: ICONS.message,
+      online: ICONS.online
+    };
+    return iconMap[name] || ICONS.scales;
+  }
+
+  // --- Create Modal ---
+  function createModal() {
+    // Overlay
+    overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 27, 70, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: felFadeIn 0.3s ease;
+    `;
+    document.body.appendChild(overlay);
+
+    // Modal
+    modal = document.createElement('div');
+    modal.style.cssText = `
+      background: #fbf9fd;
+      border-radius: 28px;
+      max-width: 820px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 70px rgba(29,27,68,.13);
+      border: 1px solid rgba(37,42,97,.08);
+      overflow: hidden;
+      position: relative;
+      animation: felSlideUp 0.35s cubic-bezier(.2,.8,.2,1);
+    `;
+    overlay.appendChild(modal);
+
+    // --- Header ---
+    const header = document.createElement('div');
+    header.style.cssText = `
+      padding: 22px 28px 16px 28px;
+      background: #252a61;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 2px solid #d6a63b;
+    `;
+    header.innerHTML = `
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="
+          width:44px;height:44px;border-radius:50%;
+          background:#d6a63b;
+          color:#252a61;
+          display:grid;place-items:center;
+          font-size:0;
+          flex-shrink:0;
+        ">${ICONS.scales}</div>
+        <div>
+          <div style="font-weight:800;font-size:20px;letter-spacing:-.02em;color:#ffffff;">Legal Resources</div>
+          <div style="font-size:12px;opacity:.7;font-weight:400;color:#edcf83;">FEL & Associates PC</div>
+        </div>
+      </div>
+      <button id="fel-modal-close" style="
+        background:rgba(255,255,255,.08);
+        border:none;
+        color:#ffffff;
+        width:36px;height:36px;
+        border-radius:50%;
+        cursor:pointer;
+        transition:all .2s;
+        display:grid;place-items:center;
+        padding:0;
+      ">${ICONS.close}</button>
+    `;
+    modal.appendChild(header);
+    closeBtn = header.querySelector('#fel-modal-close');
+    closeBtn.addEventListener('click', closeModal);
+    closeBtn.addEventListener('mouseenter', () => {
+      closeBtn.style.background = 'rgba(255,255,255,.15)';
+    });
+    closeBtn.addEventListener('mouseleave', () => {
+      closeBtn.style.background = 'rgba(255,255,255,.08)';
+    });
+
+    // --- Tabs ---
+    const tabBar = document.createElement('div');
+    tabBar.style.cssText = `
+      display: flex;
+      gap: 4px;
+      padding: 16px 28px 0 28px;
+      background: #fbf9fd;
+      border-bottom: 1px solid rgba(37,42,97,.08);
+      flex-shrink: 0;
+    `;
+    modal.appendChild(tabBar);
+
+    const tabs = [
+      { id: 'resources', label: 'Legal Resources', icon: 'book' },
+      { id: 'messages', label: 'Ask FEL', icon: 'message' }
+    ];
+
+    tabBtns = [];
+    tabs.forEach(tab => {
+      const btn = document.createElement('button');
+      btn.dataset.tab = tab.id;
+      btn.innerHTML = `${getIcon(tab.icon, 16)} <span style="margin-left:8px;">${tab.label}</span>`;
+      btn.style.cssText = `
+        padding: 10px 20px;
+        border: none;
+        background: transparent;
+        color: #6d6b7c;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all .2s ease;
+        font-family: inherit;
+        border-radius: 8px 8px 0 0;
+        display: flex;
+        align-items: center;
+        gap: 0;
+      `;
+      btn.addEventListener('click', () => switchTab(tab.id));
+      tabBar.appendChild(btn);
+      tabBtns.push(btn);
+    });
+
+    // --- Content Area ---
+    const contentArea = document.createElement('div');
+    contentArea.style.cssText = `
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 28px;
+      background: #fbf9fd;
+      min-height: 400px;
+    `;
+    modal.appendChild(contentArea);
+
+    // --- Resources Panel ---
+    const resourcesPanel = document.createElement('div');
+    resourcesPanel.id = 'panel-resources';
+    resourcesPanel.style.display = 'block';
+    
+    let resourcesHTML = `
+      <div style="margin-bottom:24px;">
+        <h3 style="
+          color:#252a61;
+          font-size:18px;
+          margin:0 0 10px 0;
+          letter-spacing:-.02em;
+          font-weight:700;
+        ">Kenya Legal Resources</h3>
+        <p style="color:#6d6b7c;font-size:14px;margin:0 0 20px 0;line-height:1.6;">
+          Curated legal information and resources for navigating Kenya's legal system.
+        </p>
+        <button id="fel-open-all" style="
+          padding:8px 20px;
+          background:transparent;
+          border:1px solid #d6a63b;
+          color:#252a61;
+          border-radius:999px;
+          font-size:12px;
+          font-weight:600;
+          cursor:pointer;
+          transition:all .2s ease;
+          font-family:inherit;
+          display:inline-flex;
+          align-items:center;
+          gap:8px;
+        ">${ICONS.arrow} Open All Resources</button>
+      </div>
+      <div style="display:grid;gap:14px;">
+    `;
+
+    RESOURCES.forEach((r, index) => {
+      resourcesHTML += `
+        <div class="fel-resource-card" data-index="${index}" style="
+          background:#ffffff;
+          border:1px solid rgba(37,42,97,.08);
+          border-radius:16px;
+          padding:16px 20px;
+          display:flex;
+          align-items:center;
+          gap:16px;
+          transition:all .25s ease;
+          cursor:pointer;
+          position:relative;
+        ">
+          <div style="
+            width:44px;height:44px;border-radius:12px;
+            background:#f3eff9;
+            display:grid;place-items:center;
+            flex-shrink:0;
+            color:#252a61;
+          ">${getIcon(r.icon, 20)}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:700;color:#252a61;font-size:15px;">${r.title}</div>
+            <div style="font-size:13px;color:#6d6b7c;margin-top:2px;line-height:1.4;">${r.desc}</div>
+          </div>
+          <div style="
+            color:#d6a63b;
+            opacity:.4;
+            transition:all .25s ease;
+            flex-shrink:0;
+          ">${ICONS.arrow}</div>
+        </div>
+      `;
+    });
+
+    resourcesHTML += `</div>`;
+    resourcesPanel.innerHTML = resourcesHTML;
+    contentArea.appendChild(resourcesPanel);
+    tabPanels = { resources: resourcesPanel };
+
+    // --- Messages Panel ---
+    const messagesPanel = document.createElement('div');
+    messagesPanel.id = 'panel-messages';
+    messagesPanel.style.display = 'none';
+    messagesPanel.innerHTML = `
+      <div style="display:flex;flex-direction:column;height:100%;min-height:350px;">
+        <div style="margin-bottom:16px;">
+          <h3 style="
+            color:#252a61;
+            font-size:18px;
+            margin:0 0 6px 0;
+            letter-spacing:-.02em;
+            font-weight:700;
+          ">Send a Message</h3>
+          <p style="color:#6d6b7c;font-size:13px;margin:0;line-height:1.5;">
+            Send a message to FEL & Associates. Our team will review and respond to your legal inquiry.
+          </p>
+          <div id="fel-status" style="
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            margin-top:10px;
+            padding:4px 14px 4px 10px;
+            background:rgba(214,166,59,.10);
+            border-radius:999px;
+            font-size:11px;
+            color:#d6a63b;
+            font-weight:600;
+          ">${ICONS.online} Online</div>
+        </div>
+        <div id="fel-chat-messages" style="
+          flex:1;
+          background:#ffffff;
+          border-radius:16px;
+          border:1px solid rgba(37,42,97,.08);
+          padding:16px;
+          overflow-y:auto;
+          max-height:260px;
+          min-height:150px;
+          margin-bottom:16px;
+        ">
+          <div class="fel-empty-chat" style="
+            text-align:center;
+            color:#6d6b7c;
+            font-size:13px;
+            padding:30px 0;
+          ">
+            <div style="font-size:32px;margin-bottom:10px;color:#d6a63b;opacity:.5;">${ICONS.message}</div>
+            <div>No messages yet. Start a conversation!</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <input id="fel-msg-input" type="text" placeholder="Type your legal question..." style="
+            flex:1;
+            padding:12px 20px;
+            border:1px solid rgba(37,42,97,.12);
+            border-radius:999px;
+            font-size:14px;
+            outline:none;
+            font-family:inherit;
+            background:#ffffff;
+            transition:all .2s;
+            color:#24243a;
+          ">
+          <button id="fel-send-btn" style="
+            padding:12px 24px;
+            border:none;
+            border-radius:999px;
+            background:#252a61;
+            color:#ffffff;
+            font-weight:700;
+            font-size:14px;
+            cursor:pointer;
+            transition:all .2s;
+            font-family:inherit;
+            white-space:nowrap;
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+          ">${ICONS.send} Send</button>
+        </div>
+      </div>
+    `;
+    contentArea.appendChild(messagesPanel);
+    tabPanels.messages = messagesPanel;
+
+    // --- Set refs ---
+    chatMessages = messagesPanel.querySelector('#fel-chat-messages');
+    msgInput = messagesPanel.querySelector('#fel-msg-input');
+    sendBtn = messagesPanel.querySelector('#fel-send-btn');
+    statusBadge = messagesPanel.querySelector('#fel-status');
+
+    // --- Event listeners ---
+    sendBtn.addEventListener('click', sendMessage);
+    msgInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    // --- Resource card click handling (no clone needed) ---
+    setTimeout(() => {
+      document.querySelectorAll('.fel-resource-card').forEach((card, index) => {
+        card.addEventListener('click', function(e) {
+          const link = RESOURCES[index]?.link;
+          if (link) {
+            window.open(link, '_blank', 'noopener,noreferrer');
+            // Visual feedback
+            this.style.transform = 'scale(0.97)';
+            this.style.borderColor = '#d6a63b';
+            this.style.boxShadow = '0 0 0 3px rgba(214,166,59,.15)';
+            setTimeout(() => {
+              this.style.transform = 'scale(1)';
+              this.style.borderColor = 'rgba(37,42,97,.08)';
+              this.style.boxShadow = 'none';
+            }, 200);
+          }
+        });
+
+        // Hover effects
+        card.addEventListener('mouseenter', function() {
+          this.style.borderColor = '#d6a63b';
+          this.style.boxShadow = '0 4px 16px rgba(37,42,97,.10)';
+          this.style.transform = 'translateY(-2px)';
+          const arrow = this.querySelector('div:last-child');
+          if (arrow) {
+            arrow.style.opacity = '1';
+            arrow.style.transform = 'translateX(4px)';
+          }
+        });
+
+        card.addEventListener('mouseleave', function() {
+          this.style.borderColor = 'rgba(37,42,97,.08)';
+          this.style.boxShadow = 'none';
+          this.style.transform = 'translateY(0)';
+          const arrow = this.querySelector('div:last-child');
+          if (arrow) {
+            arrow.style.opacity = '.4';
+            arrow.style.transform = 'translateX(0)';
+          }
+        });
+      });
+    }, 100);
+
+    // --- Open All button ---
+    const openAllBtn = resourcesPanel.querySelector('#fel-open-all');
+    if (openAllBtn) {
+      openAllBtn.addEventListener('click', function() {
+        RESOURCES.forEach(r => {
+          if (r.link) window.open(r.link, '_blank', 'noopener,noreferrer');
+        });
+        const original = this.innerHTML;
+        this.innerHTML = '✓ Opened All';
+        this.style.background = '#252a61';
+        this.style.color = '#ffffff';
+        this.style.borderColor = '#252a61';
+        setTimeout(() => {
+          this.innerHTML = original;
+          this.style.background = 'transparent';
+          this.style.color = '#252a61';
+          this.style.borderColor = '#d6a63b';
+        }, 3000);
+      });
+    }
+
+    // --- Close handlers ---
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) closeModal();
+    });
+
+    // --- Load messages ---
+    loadStoredMessages();
+
+    // --- Listen for Firebase replies ---
+    if (firebaseReady) {
+      listenForReplies();
+    }
+  }
+  
+  // --- Switch tabs ---
+  function switchTab(tabId) {
+    currentTab = tabId;
+    tabBtns.forEach(btn => {
+      const isActive = btn.dataset.tab === tabId;
+      btn.style.color = isActive ? '#252a61' : '#6d6b7c';
+      btn.style.borderBottomColor = isActive ? '#d6a63b' : 'transparent';
+      btn.style.fontWeight = isActive ? '700' : '600';
+    });
+    Object.keys(tabPanels).forEach(key => {
+      tabPanels[key].style.display = key === tabId ? 'block' : 'none';
+    });
+  }
+
+  // --- Open/Close modal ---
+  function openModal() {
+    if (isOpen) return;
+    isOpen = true;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    switchTab('resources');
+  }
+
+  function closeModal() {
+    if (!isOpen) return;
+    isOpen = false;
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  function toggleModal() {
+    isOpen ? closeModal() : openModal();
+  }
+
+  // --- Send message ---
+  async function sendMessage() {
+    const text = msgInput.value.trim();
+    if (!text) return;
+
+    const message = {
+      id: Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6),
+      text: text,
+      deviceId: deviceId,
+      conversationId: convId,
+      timestamp: new Date().toISOString(),
+      from: 'user',
+      read: false
+    };
+
+    displayMessage(message);
+    msgInput.value = '';
+
+    const messages = JSON.parse(localStorage.getItem('fel_messages') || '[]');
+    messages.push(message);
+    localStorage.setItem('fel_messages', JSON.stringify(messages));
+
+    if (firebaseReady && db) {
+      try {
+        await db.collection('fel_messages').add(message);
+        if (statusBadge) {
+          statusBadge.innerHTML = '✓ Sent';
+          statusBadge.style.color = '#2ecc71';
+          setTimeout(() => {
+            statusBadge.innerHTML = `${ICONS.online} Online`;
+            statusBadge.style.color = '#d6a63b';
+          }, 3000);
+        }
+      } catch (e) {
+        if (statusBadge) {
+          statusBadge.innerHTML = '⚠ Offline';
+          statusBadge.style.color = '#e74c3c';
+        }
+      }
+    }
+  }
+
+  // --- Display message ---
+  function displayMessage(msg) {
+    if (!chatMessages) return;
+
+    const empty = chatMessages.querySelector('.fel-empty-chat');
+    if (empty) empty.remove();
+
+    const div = document.createElement('div');
+    const isUser = msg.from === 'user';
+    div.style.cssText = `
+      margin: 6px 0;
+      padding: 10px 16px;
+      border-radius: 12px;
+      max-width: 85%;
+      word-wrap: break-word;
+      font-size: 14px;
+      line-height: 1.5;
+      animation: felMsgIn 0.3s ease;
+      ${isUser ? `
+        background: #252a61;
+        color: #ffffff;
+        margin-left: auto;
+        border-radius: 12px 12px 4px 12px;
+      ` : `
+        background: #f3eff9;
+        color: #24243a;
+        margin-right: auto;
+        border-radius: 12px 12px 12px 4px;
+      `}
+    `;
+
+    const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '';
+    div.innerHTML = `
+      <div>${msg.text}</div>
+      <div style="
+        font-size:9px;
+        opacity:.4;
+        margin-top:4px;
+        text-align:${isUser ? 'right' : 'left'};
+      ">${time}</div>
+    `;
+
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // --- Load stored messages ---
+  function loadStoredMessages() {
+    const messages = JSON.parse(localStorage.getItem('fel_messages') || '[]');
+    messages.forEach(msg => displayMessage(msg));
+  }
+
+  // --- Listen for Firebase replies ---
+  function listenForReplies() {
+    if (!firebaseReady || !db) return;
+
+    db.collection('fel_messages')
+      .where('conversationId', '==', convId)
+      .where('from', '==', 'admin')
+      .orderBy('timestamp', 'asc')
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          if (change.type === 'added') {
+            const data = change.doc.data();
+            const stored = JSON.parse(localStorage.getItem('fel_messages') || '[]');
+            const exists = stored.some(m => m.id === data.id);
+            if (!exists) {
+              stored.push(data);
+              localStorage.setItem('fel_messages', JSON.stringify(stored));
+              displayMessage(data);
+              if (statusBadge) {
+                statusBadge.innerHTML = '💬 New Reply';
+                statusBadge.style.color = '#2ecc71';
+                setTimeout(() => {
+                  statusBadge.innerHTML = `${ICONS.online} Online`;
+                  statusBadge.style.color = '#d6a63b';
+                }, 4000);
+              }
+            }
+          }
+        });
+      }, (error) => {
+        console.warn('Firestore listen error:', error);
+      });
+  }
+
+  // --- Inject navigation button ---
+  function injectButton() {
+    const nav = document.querySelector('nav .links');
+    if (!nav) return;
+
+    const existing = nav.querySelector('.nav-cta');
+    if (existing) {
+      existing.innerHTML = `${ICONS.scales} Legal`;
+      existing.style.cssText = `
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: #252a61;
+        color: #ffffff !important;
+        border: none;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      `;
+      existing.removeAttribute('href');
+      existing.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleModal();
+      });
+    } else {
+      const btn = document.createElement('button');
+      btn.className = 'nav-cta';
+      btn.innerHTML = `${ICONS.scales} Legal`;
+      btn.style.cssText = `
+        padding: 10px 18px;
+        border-radius: 999px;
+        background: #252a61;
+        color: #ffffff !important;
+        border: none;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      `;
+      btn.addEventListener('mouseenter', () => {
+        btn.style.transform = 'translateY(-2px)';
+        btn.style.boxShadow = '0 8px 20px rgba(37,42,97,.25)';
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translateY(0)';
+        btn.style.boxShadow = 'none';
+      });
+      btn.addEventListener('click', toggleModal);
+      nav.appendChild(btn);
+    }
+  }
+
+  // --- Add styles ---
+  function addStyles() {
+    if (document.getElementById('fel-modal-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'fel-modal-styles';
+    style.textContent = `
+      @keyframes felFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes felSlideUp {
+        from { opacity: 0; transform: translateY(30px) scale(.96); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes felMsgIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .fel-resource-card .fel-arrow {
+        transition: all .25s ease;
+      }
+      .fel-resource-card:hover .fel-arrow {
+        opacity: 1 !important;
+        transform: translateX(4px);
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // --- Keyboard shortcut: Ctrl+Shift+L ---
+  function addShortcut() {
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'L' || e.key === 'l')) {
+        e.preventDefault();
+        const btn = document.querySelector('.nav-cta');
+        if (btn) btn.click();
+      }
+    });
+  }
+
+  // --- Init ---
+  function init() {
+    addStyles();
+    initFirebase();
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        injectButton();
+        createModal();
+        addShortcut();
+      });
+    } else {
+      injectButton();
+      createModal();
+      addShortcut();
+    }
+  }
+
+  init();
+
+})();
+</script>
+</body>
+</html>
