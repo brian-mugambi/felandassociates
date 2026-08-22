@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FEL & Associates PC | Team Admin</title>
+<style>
+:root{--navy:#252a61;--deep:#171b46;--gold:#d6a63b;--gold-soft:#edcf83;--lav:#f3eff9;--paper:#fbf9fd;--ink:#24243a;--muted:#6d6b7c;--line:rgba(37,42,97,.12);--white:#fff;--shadow:0 24px 70px rgba(29,27,68,.13)}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.hidden{display:none!important}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 10% 10%,rgba(37,42,97,.07),transparent 35%),radial-gradient(circle at 90% 90%,rgba(214,166,59,.09),transparent 35%)}
+.login-card{width:min(440px,100%);padding:38px;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--navy)}.mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold-soft);font-size:21px;box-shadow:0 7px 20px rgba(37,42,97,.18)}.brand small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);margin-top:-2px}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:850;color:var(--gold)}h1{margin:6px 0;color:var(--deep);font-size:38px;line-height:1;letter-spacing:-.045em}.muted{color:var(--muted);font-size:14px;line-height:1.55}
+label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin:18px 0 7px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;outline:0;background:#fff;color:var(--ink)}input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,166,59,.12)}
+.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer}.primary{background:var(--navy);color:#fff}.secondary{background:var(--lav);color:var(--navy)}.login .btn{width:100%;margin-top:20px}.link{border:0;background:none;color:var(--navy);font-weight:750;cursor:pointer;padding:10px 0}.error{margin-top:14px;background:#fff2f2;color:#9a3030;border-radius:12px;padding:10px;font-size:13px}.secure{text-align:center;color:var(--muted);font-size:11px;margin-top:15px}
+header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.header-inner{width:min(1200px,calc(100% - 28px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}.wrap{width:min(1200px,calc(100% - 28px));margin:32px auto}.title-row{display:flex;justify-content:space-between;gap:20px;align-items:end}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 35px rgba(29,27,68,.06)}.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filter{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:800;cursor:pointer}.filter.active{background:var(--navy);color:#fff}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(29,27,68,.07);overflow:hidden}.inbox{padding:14px;min-height:570px}.thread{padding:14px;border-radius:16px;border:1px solid transparent;cursor:pointer;margin-bottom:6px}.thread:hover,.thread.active{background:var(--lav);border-color:rgba(214,166,59,.3)}.thread strong{display:block;color:var(--navy)}.thread small{color:var(--muted)}.badge{float:right;background:var(--gold);color:#fff;border-radius:99px;padding:3px 8px;font-size:9px;font-weight:850;text-transform:uppercase}
+.conversation{min-height:570px;display:flex;flex-direction:column}.convhead{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}.messages{flex:1;min-height:360px;max-height:470px;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:78%;padding:12px 15px;border-radius:16px;line-height:1.5;font-size:14px}.client{align-self:flex-start;background:var(--lav);border-bottom-left-radius:4px}.team{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}.meta{font-size:9px;opacity:.55;margin-top:5px}.reply{border-top:1px solid var(--line);padding:15px;display:flex;gap:10px}.reply textarea{min-height:70px;resize:vertical}.reply .btn{align-self:flex-end;white-space:nowrap}.empty{flex:1;display:grid;place-items:center;text-align:center;color:var(--muted);padding:40px}.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:30}
+.datastatus{margin:0 0 16px;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.5;border:1px solid var(--line);background:var(--lav);color:var(--navy)}
+.datastatus.warn{background:#fff8e6;border-color:rgba(214,166,59,.4);color:#7a5c10}
+.datastatus.err{background:#fff2f2;border-color:rgba(154,48,48,.3);color:#9a3030}
+.datastatus.ok{background:#eefaf0;border-color:rgba(46,125,50,.25);color:#276b2e}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.inbox{min-height:auto}.messages{max-height:420px}}
+</style>
+</head>
+<body>
+<section id="login" class="login">
+ <div class="login-card">
+  <div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div>
+  <div style="margin-top:30px" class="eyebrow">Admin</div>
+
+  <p class="muted">Sign in.</p>
+  <form id="loginForm">
+   <label>Username</label><input id="email" type="email" autocomplete="username" placeholder="Type..." required>
+   <label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Type..." required>
+   <button class="btn primary" type="submit">Sign in</button>
+  </form>
+  <button id="forgot" class="link">Forgot password?</button>
+  <div id="loginError" class="error hidden"></div>
+  <div class="secure">Secure</div>
+ </div>
+</section>
+
+<section id="app" class="hidden">
+<header><div class="header-inner"><div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div><button id="logout" class="btn secondary">Sign out</button></div></header>
+<main class="wrap">
+ <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Client Messages</h1><p class="muted">Live website conversations — each conversation is one document in <b>fel_messages</b>, keyed by its <b>conversationId</b>.</p></div></div>
+ <div id="dataStatus" class="datastatus hidden"></div>
+ <div class="stats"><div class="stat"><span>Total messages</span><strong id="total">0</strong></div><div class="stat"><span>New client messages</span><strong id="newCount">0</strong></div><div class="stat"><span>Open conversations</span><strong id="openCount">0</strong></div><div class="stat"><span>Replies sent</span><strong id="replyCount">0</strong></div></div>
+ <div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="unread">Unread</button><button class="filter" data-filter="replied">Replied</button></div>
+ <div class="layout">
+  <aside class="panel inbox"><input id="search" placeholder="Search client messages…"><div id="threads" style="margin-top:12px"></div></aside>
+  <section class="panel conversation" id="conversation"><div class="empty"><div><div style="font-size:40px;color:var(--gold)">⚖</div><b>Select a conversation</b><div>Client messages from the website will appear here.</div></div></div></section>
+ </div>
+</main>
+</section>
+<div id="toast" class="toast hidden"></div>
+
+<script type="module">
+import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,sendPasswordResetEmail,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+import {getFirestore,collection,onSnapshot,doc,setDoc,arrayUnion} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyBgpHpRUYlgkPVDLlZUsSebqTuPTCx8ZUk",
+  authDomain: "fel-and-associates.firebaseapp.com",
+  projectId: "fel-and-associates",
+  storageBucket: "fel-and-associates.firebasestorage.app",
+  messagingSenderId: "636589646608",
+  appId: "1:636589646608:web:b7c58edb99a61525a77b95",
+  measurementId: "G-T5C8V3CMSD",
+  databaseURL: "https://fel-and-associates-default-rtdb.firebaseio.com/"
+};
+const login=document.querySelector("#login"),app=document.querySelector("#app"),err=document.querySelector("#loginError");
+let auth,db,all=[],selected=null,unsubscribe=null,filter="all";
+let dataState={phase:"idle",error:null}; // phase: idle | loading | loaded
+
+function showError(x){err.textContent=x;err.classList.remove("hidden")}
+function renderStatus(){
+ const s=document.querySelector("#dataStatus");
+ if(dataState.phase==="loading"){
+   s.className="datastatus";s.textContent="Connecting to Firestore…";s.classList.remove("hidden");return;
+ }
+ if(dataState.phase==="error"){
+   s.className="datastatus err";
+   s.textContent="⚠ Can't reach the messages collection: "+dataState.error+". If this says 'permission-denied', the signed-in account's Firestore security rules don't allow reading fel_messages.";
+   s.classList.remove("hidden");return;
+ }
+ // phase === loaded
+ if(all.length===0){
+   s.className="datastatus warn";
+   s.textContent="Connected to Firestore, but the fel_messages collection is empty — no conversations have been received from the website yet.";
+   s.classList.remove("hidden");return;
+ }
+ const allMsgs=all.flatMap(c=>Array.isArray(c.messages)?c.messages:[]);
+ if(allMsgs.length===0){
+   s.className="datastatus warn";
+   s.textContent=`Connected — ${all.length} conversation document(s) found, but none contain a "messages" array. Check that the website is writing to doc.messages via arrayUnion, not to a top-level field.`;
+   s.classList.remove("hidden");return;
+ }
+ const clientCount=allMsgs.filter(isClient).length;
+ if(clientCount===0){
+   const fromValues=[...new Set(allMsgs.map(m=>m.from))];
+   s.className="datastatus warn";
+   s.textContent=`Connected — ${allMsgs.length} message(s) loaded, but none have from:"user" (what this page looks for as a client message). Actual "from" values found: ${fromValues.map(v=>JSON.stringify(v)).join(", ")||"(none)"}. The website is likely writing a different value — update isClient() to match it.`;
+   s.classList.remove("hidden");return;
+ }
+ s.classList.add("hidden");
+}
+function toast(x){const t=document.querySelector("#toast");t.textContent=x;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),2600)}
+function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function time(x){try{return new Date(x).toLocaleString()}catch{return ""}}
+function isClient(m){return m.from==="user"}
+// --- Conversations: one Firestore doc per conversationId, doc.data().messages = array of messages ---
+function conversations(){
+ return all.map(c=>({
+   id:c.id,
+   msgs:(Array.isArray(c.messages)?c.messages:[]).slice().sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp))
+ })).sort((a,b)=>new Date(b.msgs.at(-1)?.timestamp||0)-new Date(a.msgs.at(-1)?.timestamp||0));
+}
+function visibleThreads(){
+ const term=document.querySelector("#search").value.toLowerCase().trim();
+ return conversations().filter(t=>{
+   const hasUser=t.msgs.some(isClient),hasAdmin=t.msgs.some(m=>m.from==="admin"),unread=t.msgs.some(m=>isClient(m)&&!m.read);
+   const text=t.msgs.map(m=>m.text).join(" ").toLowerCase();
+   return hasUser && (!term||text.includes(term)||t.id.toLowerCase().includes(term)) &&
+    (filter==="all"||(filter==="unread"&&unread)||(filter==="replied"&&hasAdmin));
+ });
+}
+function renderStats(){
+ const allMsgs=all.flatMap(c=>Array.isArray(c.messages)?c.messages:[]);
+ document.querySelector("#total").textContent=allMsgs.filter(isClient).length;
+ document.querySelector("#newCount").textContent=allMsgs.filter(m=>isClient(m)&&!m.read).length;
+ document.querySelector("#openCount").textContent=conversations().filter(t=>t.msgs.some(isClient)).length;
+ document.querySelector("#replyCount").textContent=allMsgs.filter(m=>m.from==="admin").length;
+}
+function renderThreads(){
+ const box=document.querySelector("#threads"),threads=visibleThreads();
+ box.innerHTML=threads.length?threads.map(t=>{
+   const last=t.msgs.at(-1), first=t.msgs.find(isClient), unread=t.msgs.some(m=>isClient(m)&&!m.read);
+   return `<div class="thread ${selected?.id===t.id?"active":""}" data-id="${esc(t.id)}">
+     <span class="badge">${unread?"new":t.msgs.some(m=>m.from==="admin")?"replied":"open"}</span>
+     <strong>Website visitor</strong><small>${esc(first?.text?.slice(0,90)||"Client conversation")}</small><br>
+     <small>${esc(last?.text?.slice(0,72)||"")}</small>
+   </div>`;
+ }).join(""):`<div class="empty">No website messages found.</div>`;
+ box.querySelectorAll(".thread").forEach(x=>x.onclick=()=>openThread(x.dataset.id));
+}
+function openThread(id){
+ const t=conversations().find(x=>x.id===id);if(!t)return;selected=t;renderThreads();
+ document.querySelector("#conversation").innerHTML=`
+  <div class="convhead"><div><div class="eyebrow">Website conversation</div><h2 style="margin:5px 0;color:var(--navy)">${esc(t.id)}</h2><div class="muted">Conversation ID used by the website</div></div><span class="filter active">LIVE</span></div>
+  <div id="messages" class="messages">${t.msgs.map(m=>`<div class="bubble ${m.from==="admin"?"team":"client"}">${esc(m.text)}<div class="meta">${m.from==="admin"?"FEL & Associates team":"Website visitor"} · ${time(m.timestamp)}</div></div>`).join("")}</div>
+  <div class="reply"><textarea id="reply" placeholder="Reply to the client on the website…"></textarea><button id="send" class="btn primary">Send reply</button></div>`;
+ document.querySelector("#send").onclick=sendReply;
+ const box=document.querySelector("#messages");box.scrollTop=box.scrollHeight;
+ // Mark this conversation's client messages read using the existing collection/document IDs.
+ // This requires Firestore write permission for the authenticated team account.
+}
+async function sendReply(){
+ const input=document.querySelector("#reply"),text=input.value.trim();if(!text||!selected)return;
+ const message={id:Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,6),text,deviceId:"admin",conversationId:selected.id,timestamp:new Date().toISOString(),from:"admin",read:false};
+ try{
+   await setDoc(doc(db,"fel_messages",selected.id),{messages:arrayUnion(message),lastUpdated:message.timestamp},{merge:true});
+   input.value="";toast("Reply sent to the website conversation.");openThread(selected.id);
+ }catch(e){toast("Could not send reply: "+e.message)}
+}
+
+document.querySelector("#loginForm").onsubmit=async e=>{e.preventDefault();err.classList.add("hidden");try{await signInWithEmailAndPassword(auth,document.querySelector("#email").value.trim(),document.querySelector("#password").value)}catch(e){showError("Sign-in failed. Check the username and password.")}};
+document.querySelector("#forgot").onclick=async()=>{const e=document.querySelector("#email").value.trim();if(!e)return showError("Enter your username/email first.");try{await sendPasswordResetEmail(auth,e);showError("Password reset email sent.");}catch(x){showError("Could not send the reset email.")}};
+document.querySelector("#logout").onclick=()=>signOut(auth);
+document.querySelector("#search").oninput=renderThreads;
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderThreads()});
+
+const firebaseApp=getApps().length?getApps()[0]:initializeApp(firebaseConfig);auth=getAuth(firebaseApp);db=getFirestore(firebaseApp);
+onAuthStateChanged(auth,user=>{
+ if(!user){login.classList.remove("hidden");app.classList.add("hidden");if(unsubscribe)unsubscribe();return}
+ login.classList.add("hidden");app.classList.remove("hidden");
+ dataState={phase:"loading",error:null};renderStatus();
+ unsubscribe=onSnapshot(collection(db,"fel_messages"),s=>{
+   all=s.docs.map(d=>({id:d.id,...d.data()}));
+   dataState={phase:"loaded",error:null};
+   renderStats();renderThreads();renderStatus();
+   if(selected)openThread(selected.id);
+ },e=>{
+   dataState={phase:"error",error:e.code||e.message};
+   renderStatus();
+   toast("Firestore error: "+e.message);
+ });
+});
+</script>
+</body>
+</html>
