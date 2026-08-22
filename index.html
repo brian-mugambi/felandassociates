@@ -717,6 +717,10 @@
                 <span>Nairobi, Kenya</span>
               </div>
             </div>
+
+<div>
+                <a href="policies.html" >Privacy Policy</a></div>
+            
           </div>
         </div>
 
@@ -741,9 +745,9 @@
     <div class="container footer-inner">
       <div>© <span id="year"></span> <strong>FEL & Associates PC</strong>. All rights reserved.</div>
       <div>Nairobi, Kenya • Legal Services</div>
-    </div>
+     <a href="admin.html">admin</a> </div>
   </footer>
-  <a href="admin.html">admin</a>
+
   <script src="images.js"></script>
   <script src="contact.js"></script>
 <script src="spts-global-pop.js"></script>
@@ -1657,6 +1661,8 @@
 
   })();
 </script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
   <script>
 // ============================================================
 //  FEL & Associates - Professional Legal Resources & Messaging ============================================================
@@ -1686,7 +1692,7 @@
   localStorage.setItem('fel_conv_id', convId);
 
   // --- DOM refs ---
-  let modal, overlay, closeBtn, tabBtns, tabPanels, msgInput, sendBtn, chatMessages, statusBadge;
+  let modal, overlay, closeBtn, tabBtns, tabPanels, msgInput, sendBtn, chatMessages, statusBadge, diagLine;
 
   // --- SVG Icons (professional, no emojis) ---
   const ICONS = {
@@ -1726,6 +1732,8 @@
         db = firebase.firestore();
         firebaseReady = true;
         console.log('Firebase already initialized');
+      } else {
+        console.warn('Firebase SDK not loaded — messages will only be saved to localStorage, not sent to the admin inbox.');
       }
     } catch (e) {
       console.warn('Firebase error:', e.message);
@@ -1995,6 +2003,8 @@
             color:#d6a63b;
             font-weight:600;
           ">${ICONS.online} Online</div>
+          <div id="fel-diag" style="display:none;margin-top:6px;font-size:11px;color:#9a3030;background:#fff2f2;border-radius:8px;padding:5px 9px;"></div>
+          <div id="fel-convid" style="margin-top:6px;font-size:10px;color:#9d9aa8;font-family:monospace;user-select:all;">Conversation ID: ${convId}</div>
         </div>
         <div id="fel-chat-messages" style="
           flex:1;
@@ -2057,6 +2067,7 @@
     msgInput = messagesPanel.querySelector('#fel-msg-input');
     sendBtn = messagesPanel.querySelector('#fel-send-btn');
     statusBadge = messagesPanel.querySelector('#fel-status');
+    diagLine = messagesPanel.querySelector('#fel-diag');
 
     // --- Event listeners ---
     sendBtn.addEventListener('click', sendMessage);
@@ -2196,16 +2207,16 @@
       read: false
     };
 
-    displayMessage(message);
+    pendingLocal.push(message);
+    renderIfChanged();
     msgInput.value = '';
-
-    const messages = JSON.parse(localStorage.getItem('fel_messages') || '[]');
-    messages.push(message);
-    localStorage.setItem('fel_messages', JSON.stringify(messages));
 
     if (firebaseReady && db) {
       try {
-        await db.collection('fel_messages').add(message);
+        await db.collection('fel_messages').doc(convId).set({
+          messages: firebase.firestore.FieldValue.arrayUnion(message),
+          lastUpdated: message.timestamp
+        }, { merge: true });
         if (statusBadge) {
           statusBadge.innerHTML = '✓ Sent';
           statusBadge.style.color = '#2ecc71';
@@ -2272,41 +2283,115 @@
   // --- Load stored messages ---
   function loadStoredMessages() {
     const messages = JSON.parse(localStorage.getItem('fel_messages') || '[]');
-    messages.forEach(msg => displayMessage(msg));
+    messages.forEach(m => seenAdminIds.add(m.id));
+    lastRenderKey = messages.map(m => m.id + ':' + m.from).join('|');
+    renderAllMessages(messages);
   }
 
-  // --- Listen for Firebase replies ---
+  // --- Render a full message list from scratch (server is the source of truth) ---
+  function renderAllMessages(list) {
+    if (!chatMessages) return;
+    chatMessages.innerHTML = '';
+    if (!list.length) {
+      chatMessages.innerHTML = '<div class="fel-empty-chat" style="text-align:center;color:#6d6b7c;font-size:13px;padding:30px 10px;">No messages yet. Send us one below.</div>';
+      return;
+    }
+    list.forEach(msg => displayMessage(msg));
+  }
+
+  // --- Full conversation sync ---
+  // Downloads the ENTIRE conversation (visitor messages + admin replies) from
+  // Firestore every time — not just new/changed docs — and uses that as the
+  // source of truth for both localStorage and what's on screen. This sidesteps
+  // any missed-listener / missed-index / dedupe edge cases entirely: whatever
+  // is in Firestore for this conversationId is exactly what gets shown.
+  let lastServerList = [];
+  let pendingLocal = [];   // messages this device just sent, not yet seen back from the server
+  let lastRenderKey = '';
+  let seenAdminIds = new Set();
+  let syncTimer = null;
+
+  function mergedMessageList() {
+    const merged = [...lastServerList];
+    pendingLocal.forEach(p => {
+      if (!merged.some(m => m.id === p.id)) merged.push(p);
+    });
+    merged.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    return merged;
+  }
+
+  function renderIfChanged() {
+    const merged = mergedMessageList();
+    const key = merged.map(m => m.id + ':' + m.from).join('|');
+    if (key === lastRenderKey) return; // nothing actually changed, skip re-render
+    lastRenderKey = key;
+    localStorage.setItem('fel_messages', JSON.stringify(merged));
+    renderAllMessages(merged);
+
+    const newAdmin = merged.filter(m => m.from === 'admin' && !seenAdminIds.has(m.id));
+    merged.forEach(m => seenAdminIds.add(m.id));
+    if (newAdmin.length && statusBadge) {
+      statusBadge.innerHTML = '💬 New Reply';
+      statusBadge.style.color = '#2ecc71';
+      setTimeout(() => {
+        statusBadge.innerHTML = `${ICONS.online} Online`;
+        statusBadge.style.color = '#d6a63b';
+      }, 4000);
+    }
+  }
+
+  function applyServerSnapshot(messages) {
+    lastServerList = (Array.isArray(messages) ? messages.slice() : [])
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    console.log(`[FEL widget] synced conversationId=${convId} — ${lastServerList.length} message(s):`, lastServerList.map(m => ({from: m.from, text: (m.text||'').slice(0,40)})));
+    // Drop any pending local sends that the server has now confirmed.
+    pendingLocal = pendingLocal.filter(p => !lastServerList.some(m => m.id === p.id));
+    renderIfChanged();
+  }
+
+  // --- Listen for Firebase replies / sync full conversation ---
+  // Each conversation is a single Firestore document (fel_messages/{convId})
+  // holding a "messages" array. This means the widget never runs a query at
+  // all — it just reads/listens to one document by ID — so there's no
+  // where()/orderBy() combination that could ever need a composite index.
+  function showDiag(msg) {
+    if (!diagLine) return;
+    if (!msg) { diagLine.style.display = 'none'; diagLine.textContent = ''; return; }
+    diagLine.textContent = msg;
+    diagLine.style.display = 'block';
+  }
+
   function listenForReplies() {
     if (!firebaseReady || !db) return;
 
-    db.collection('fel_messages')
-      .where('conversationId', '==', convId)
-      .where('from', '==', 'admin')
-      .orderBy('timestamp', 'asc')
-      .onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-          if (change.type === 'added') {
-            const data = change.doc.data();
-            const stored = JSON.parse(localStorage.getItem('fel_messages') || '[]');
-            const exists = stored.some(m => m.id === data.id);
-            if (!exists) {
-              stored.push(data);
-              localStorage.setItem('fel_messages', JSON.stringify(stored));
-              displayMessage(data);
-              if (statusBadge) {
-                statusBadge.innerHTML = '💬 New Reply';
-                statusBadge.style.color = '#2ecc71';
-                setTimeout(() => {
-                  statusBadge.innerHTML = `${ICONS.online} Online`;
-                  statusBadge.style.color = '#d6a63b';
-                }, 4000);
-              }
-            }
-          }
-        });
-      }, (error) => {
-        console.warn('Firestore listen error:', error);
-      });
+    const convRef = db.collection('fel_messages').doc(convId);
+
+    convRef.onSnapshot((docSnap) => {
+      showDiag(null);
+      const data = docSnap.data();
+      applyServerSnapshot(data && data.messages);
+    }, (error) => {
+      console.warn('Firestore listen error:', error);
+      showDiag(`Can't load replies (${error.code || error.message}).`);
+    });
+
+    // --- 500ms full re-download fallback ---
+    // Belt-and-suspenders alongside onSnapshot above: re-fetches the
+    // conversation document from the server every 500ms regardless of
+    // listener state, so replies surface on a reliable cadence even through
+    // network blips.
+    if (syncTimer) clearInterval(syncTimer);
+    syncTimer = setInterval(async () => {
+      try {
+        const docSnap = await convRef.get();
+        showDiag(null);
+        const data = docSnap.data();
+        applyServerSnapshot(data && data.messages);
+      } catch (e) {
+        console.warn('Conversation sync error:', e.message);
+        showDiag(`Can't load replies (${e.code || e.message}).`);
+      }
+    }, 500);
   }
 
   // --- Inject navigation button ---
