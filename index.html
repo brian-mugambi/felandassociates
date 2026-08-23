@@ -512,9 +512,6 @@
     .why-card p{margin:0;color:var(--muted);font-size:13px}
 
     /* Firestore-driven sections: team / gallery / testimonials / insights */
-    /* Hidden until real content is loaded from Firestore, so nothing */
-    /* "coming soon" ever shows on the live site. */
-    .fs-section{display:none}
     .team{background:#fff}
     .team-grid,.gallery-grid,.insights-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
     .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -792,27 +789,73 @@
       </div>
     </section>
 
-    <section id="team" class="team fs-section">
+    <section id="team" class="team">
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Meet the practice</div>
           <h2>The team behind your representation.</h2>
-          <p>Profiles below are managed from our content system and update automatically.</p>
+          <p></p>
         </div>
         <!-- Populated from the Firestore "team" collection: { imageUrl, name, role, order } -->
-        <div class="team-grid" id="team-grid"></div>
+        <div class="team-grid" id="team-grid">
+          <div class="team-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <div class="role"></div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <div class="role"></div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <div class="role"></div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <div class="role"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="gallery" class="gallery fs-section">
+    <section id="gallery" class="gallery">
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Our work</div>
           <h2>Moments from the practice.</h2>
-          <p>Images and captions in this section are pulled live from our content system.</p>
+          <p></p>
         </div>
         <!-- Populated from the Firestore "gallery" collection: { imageUrl, caption, order } -->
-        <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="gallery-grid" id="gallery-grid">
+          <div class="gallery-card">
+            <div class="media"></div>
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-card">
+            <div class="media"></div>
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-card">
+            <div class="media"></div>
+            <div class="gallery-caption"></div>
+          </div>
+          <div class="gallery-card">
+            <div class="media"></div>
+            <div class="gallery-caption"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -839,26 +882,79 @@
       </div>
     </section>
 
-    <section id="testimonials" class="testimonials fs-section">
+    <section id="testimonials" class="testimonials">
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Client feedback</div>
           <h2>What clients say about working with us.</h2>
         </div>
         <!-- Populated from the Firestore "testimonials" collection: { imageUrl, quote, author, role, order } -->
-        <div class="testimonials-grid" id="testimonials-grid"></div>
+        <div class="testimonials-grid" id="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-quote"></p>
+            <div class="testimonial-person">
+              <div class="avatar"></div>
+              <div>
+                <strong></strong>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote"></p>
+            <div class="testimonial-person">
+              <div class="avatar"></div>
+              <div>
+                <strong></strong>
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-quote"></p>
+            <div class="testimonial-person">
+              <div class="avatar"></div>
+              <div>
+                <strong></strong>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="insights" class="insights fs-section">
+    <section id="insights" class="insights">
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Insights & resources</div>
           <h2>Legal updates worth knowing.</h2>
-          <p>Articles and notices in this section are published directly from our content system.</p>
+        
         </div>
         <!-- Populated from the Firestore "insights" collection: { imageUrl, title, excerpt, order } -->
-        <div class="insights-grid" id="insights-grid"></div>
+        <div class="insights-grid" id="insights-grid">
+          <article class="insight-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+            
+            </div>
+          </article>
+          <article class="insight-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <p></p>
+            </div>
+          </article>
+          <article class="insight-card">
+            <div class="media"></div>
+            <div class="body">
+              <h3></h3>
+              <p></p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -2834,7 +2930,17 @@
 </script>
 
 <script>
-    (function() {
+  // ============================================================
+  //  FEL & Associates - Dynamic Content (Firestore-driven sections)
+  //  Independent of the chat/messaging widgets above — reads only.
+  //  Expected Firestore collections (each doc uses imageUrl for the
+  //  picture and plain text fields for the caption/copy below it):
+  //    team         -> { imageUrl, name, role, order }
+  //    gallery      -> { imageUrl, caption, order }
+  //    testimonials -> { imageUrl, quote, author, role, order }
+  //    insights     -> { imageUrl, title, excerpt, order }
+  // ============================================================
+  (function() {
     'use strict';
 
     const firebaseConfig = {
@@ -2873,7 +2979,9 @@
       return node;
     }
 
-    
+    // An <img> pulled from a Firestore imageUrl, dropped into a themed
+    // placeholder block. If no imageUrl is set, the block keeps its
+    // existing placeholder background so the layout never breaks.
     function mediaBlock(imageUrl, alt) {
       const media = el('div', 'media');
       if (imageUrl) {
@@ -2946,10 +3054,8 @@
       const container = document.getElementById(containerId);
       if (!container || !db) return;
 
-      const section = container.closest('.fs-section');
-
       db.collection(collectionName).get().then((snapshot) => {
-        if (snapshot.empty) return; // nothing added yet — section stays hidden
+        if (snapshot.empty) return; // keep the existing placeholder cards
 
         const docs = [];
         snapshot.forEach((doc) => docs.push(doc.data()));
@@ -2960,9 +3066,6 @@
           if (!data) return;
           container.appendChild(buildFn(data));
         });
-
-        // Only reveal the section once it actually has real content.
-        if (section) section.style.display = '';
       }).catch((err) => {
         console.warn(`Could not load "${collectionName}" from Firestore:`, err.message);
       });
