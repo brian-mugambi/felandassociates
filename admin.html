@@ -12,14 +12,28 @@
 .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:850;color:var(--gold)}h1{margin:6px 0;color:var(--deep);font-size:38px;line-height:1;letter-spacing:-.045em}.muted{color:var(--muted);font-size:14px;line-height:1.55}
 label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin:18px 0 7px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;outline:0;background:#fff;color:var(--ink)}input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,166,59,.12)}
 .btn{border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer}.primary{background:var(--navy);color:#fff}.secondary{background:var(--lav);color:var(--navy)}.login .btn{width:100%;margin-top:20px}.link{border:0;background:none;color:var(--navy);font-weight:750;cursor:pointer;padding:10px 0}.error{margin-top:14px;background:#fff2f2;color:#9a3030;border-radius:12px;padding:10px;font-size:13px}.secure{text-align:center;color:var(--muted);font-size:11px;margin-top:15px}
-header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.header-inner{width:min(1200px,calc(100% - 28px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}.wrap{width:min(1200px,calc(100% - 28px));margin:32px auto}.title-row{display:flex;justify-content:space-between;gap:20px;align-items:end}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 35px rgba(29,27,68,.06)}.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
+header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.header-inner{width:min(1200px,calc(100% - 28px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}.wrap{width:min(1200px,calc(100% - 28px));margin:32px auto}.title-row{display:flex;justify-content:space-between;gap:20px;align-items:end}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 35px rgba(29,27,68,.06);transition:transform .15s ease,box-shadow .15s ease}.stat:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(29,27,68,.1)}.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filter{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:800;cursor:pointer}.filter.active{background:var(--navy);color:#fff}
-.layout{display:grid;grid-template-columns:340px 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(29,27,68,.07);overflow:hidden}.inbox{padding:14px;min-height:570px}.thread{padding:14px;border-radius:16px;border:1px solid transparent;cursor:pointer;margin-bottom:6px}.thread:hover,.thread.active{background:var(--lav);border-color:rgba(214,166,59,.3)}.thread strong{display:block;color:var(--navy)}.thread small{color:var(--muted)}.badge{float:right;background:var(--gold);color:#fff;border-radius:99px;padding:3px 8px;font-size:9px;font-weight:850;text-transform:uppercase}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(29,27,68,.07);overflow:hidden}.inbox{padding:14px;min-height:570px}.thread{padding:14px;border-radius:16px;border:1px solid transparent;cursor:pointer;margin-bottom:6px;transition:background .12s ease,border-color .12s ease}.thread:hover,.thread.active{background:var(--lav);border-color:rgba(214,166,59,.3)}.thread strong{display:block;color:var(--navy)}.thread small{color:var(--muted)}.badge{float:right;background:var(--gold);color:#fff;border-radius:99px;padding:3px 8px;font-size:9px;font-weight:850;text-transform:uppercase}
 .conversation{min-height:570px;display:flex;flex-direction:column}.convhead{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}.messages{flex:1;min-height:360px;max-height:470px;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:78%;padding:12px 15px;border-radius:16px;line-height:1.5;font-size:14px}.client{align-self:flex-start;background:var(--lav);border-bottom-left-radius:4px}.team{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}.meta{font-size:9px;opacity:.55;margin-top:5px}.reply{border-top:1px solid var(--line);padding:15px;display:flex;gap:10px}.reply textarea{min-height:70px;resize:vertical}.reply .btn{align-self:flex-end;white-space:nowrap}.empty{flex:1;display:grid;place-items:center;text-align:center;color:var(--muted);padding:40px}.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:30}
 .datastatus{margin:0 0 16px;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.5;border:1px solid var(--line);background:var(--lav);color:var(--navy)}
 .datastatus.warn{background:#fff8e6;border-color:rgba(214,166,59,.4);color:#7a5c10}
 .datastatus.err{background:#fff2f2;border-color:rgba(154,48,48,.3);color:#9a3030}
 .datastatus.ok{background:#eefaf0;border-color:rgba(46,125,50,.25);color:#276b2e}
+.tabs{display:flex;gap:8px}
+.tab{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer}
+.tab.active{background:var(--navy);color:#fff}
+.formpanel{padding:22px}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.content-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;transition:transform .15s ease,box-shadow .15s ease}.content-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(29,27,68,.09)}
+.content-media{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--lav)}
+.content-media.empty{display:grid;place-items:center;color:var(--muted);font-size:12px}
+.content-body{padding:12px 14px}
+.content-title{font-weight:800;color:var(--navy);font-size:14px}
+.content-sub{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
+.content-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.content-actions{display:flex;gap:10px}
+.content-actions button{font-size:12px}
 @media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.inbox{min-height:auto}.messages{max-height:420px}}
 </style>
 </head>
@@ -31,19 +45,20 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
 
   <p class="muted">Sign in.</p>
   <form id="loginForm">
-   <label>Username</label><input id="email" type="email" autocomplete="username" placeholder="Type..." required>
-   <label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Type..." required>
+   <label for="email">Username</label><input id="email" type="email" autocomplete="username" placeholder="Type..." required>
+   <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Type..." required>
    <button class="btn primary" type="submit">Sign in</button>
   </form>
   <button id="forgot" class="link">Forgot password?</button>
   <div id="loginError" class="error hidden"></div>
-  <div class="secure">Secure</div>
+  <div class="secure">Desktop Version not suitable on mobile view</div>
  </div>
 </section>
 
 <section id="app" class="hidden">
-<header><div class="header-inner"><div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div><button id="logout" class="btn secondary">Sign out</button></div></header>
+<header><div class="header-inner"><div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div><div style="display:flex;gap:14px;align-items:center"><div class="tabs" id="mainTabs"><button class="tab active" data-tab="messages">Messages</button><button class="tab" data-tab="content">Website Content</button></div><button id="logout" class="btn secondary">Sign out</button></div></div></header>
 <main class="wrap">
+<div id="messagesView">
  <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Client Messages</h1><p class="muted">Live website conversations — each conversation is one document in <b>fel_messages</b>, keyed by its <b>conversationId</b>.</p></div></div>
  <div id="dataStatus" class="datastatus hidden"></div>
  <div class="stats"><div class="stat"><span>Total messages</span><strong id="total">0</strong></div><div class="stat"><span>New client messages</span><strong id="newCount">0</strong></div><div class="stat"><span>Open conversations</span><strong id="openCount">0</strong></div><div class="stat"><span>Replies sent</span><strong id="replyCount">0</strong></div></div>
@@ -52,6 +67,15 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
   <aside class="panel inbox"><input id="search" placeholder="Search client messages…"><div id="threads" style="margin-top:12px"></div></aside>
   <section class="panel conversation" id="conversation"><div class="empty"><div><div style="font-size:40px;color:var(--gold)">⚖</div><b>Select a conversation</b><div>Client messages from the website will appear here.</div></div></div></section>
  </div>
+</div>
+<div id="contentView" class="hidden">
+ <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Website Content</h1><p class="muted">Feed the Team, Gallery, Testimonials and Insights sections on the live website. Each section stays hidden on the site until at least one item is added here.</p></div></div>
+ <div class="filters" id="contentTabs"></div>
+ <div class="layout" style="grid-template-columns:360px 1fr">
+  <aside class="panel formpanel" id="contentForm"></aside>
+  <section class="panel formpanel" id="contentList"></section>
+ </div>
+</div>
 </main>
 </section>
 <div id="toast" class="toast hidden"></div>
@@ -59,7 +83,7 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
 <script type="module">
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {getAuth,signInWithEmailAndPassword,sendPasswordResetEmail,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getFirestore,collection,onSnapshot,doc,setDoc,arrayUnion} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import {getFirestore,collection,onSnapshot,doc,setDoc,arrayUnion,addDoc,deleteDoc,updateDoc} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBgpHpRUYlgkPVDLlZUsSebqTuPTCx8ZUk",
   authDomain: "fel-and-associates.firebaseapp.com",
@@ -153,8 +177,14 @@ function openThread(id){
   <div class="reply"><textarea id="reply" placeholder="Reply to the client on the website…"></textarea><button id="send" class="btn primary">Send reply</button></div>`;
  document.querySelector("#send").onclick=sendReply;
  const box=document.querySelector("#messages");box.scrollTop=box.scrollHeight;
- // Mark this conversation's client messages read using the existing collection/document IDs.
- // This requires Firestore write permission for the authenticated team account.
+ markRead(id);
+}
+async function markRead(id){
+ const original=all.find(c=>c.id===id);
+ if(!original||!Array.isArray(original.messages))return;
+ if(!original.messages.some(m=>isClient(m)&&!m.read))return;
+ const updated=original.messages.map(m=>isClient(m)&&!m.read?{...m,read:true}:m);
+ try{await updateDoc(doc(db,"fel_messages",id),{messages:updated})}catch(e){/* likely missing write permission; badge simply won't clear */}
 }
 async function sendReply(){
  const input=document.querySelector("#reply"),text=input.value.trim();if(!text||!selected)return;
@@ -165,17 +195,138 @@ async function sendReply(){
  }catch(e){toast("Could not send reply: "+e.message)}
 }
 
+// --- Website Content: feeds the Team / Gallery / Testimonials / Insights sections on the live site ---
+const CONTENT_TYPES=[
+ {key:"team",label:"Team",collection:"team",titleField:"name",fields:[
+   {name:"imageUrl",label:"Photo URL",type:"text"},
+   {name:"name",label:"Name",type:"text",required:true},
+   {name:"role",label:"Role / title",type:"text"},
+   {name:"order",label:"Order (lower shows first)",type:"number"}
+ ]},
+ {key:"gallery",label:"Gallery",collection:"gallery",titleField:"caption",fields:[
+   {name:"imageUrl",label:"Image URL",type:"text",required:true},
+   {name:"caption",label:"Caption",type:"text",required:true},
+   {name:"order",label:"Order (lower shows first)",type:"number"}
+ ]},
+ {key:"testimonials",label:"Testimonials",collection:"testimonials",titleField:"author",fields:[
+   {name:"imageUrl",label:"Client photo URL (optional)",type:"text"},
+   {name:"quote",label:"Quote",type:"textarea",required:true},
+   {name:"author",label:"Client name",type:"text",required:true},
+   {name:"role",label:"Client role / company",type:"text"},
+   {name:"order",label:"Order (lower shows first)",type:"number"}
+ ]},
+ {key:"insights",label:"Insights",collection:"insights",titleField:"title",fields:[
+   {name:"imageUrl",label:"Image URL",type:"text"},
+   {name:"title",label:"Title",type:"text",required:true},
+   {name:"excerpt",label:"Excerpt / summary",type:"textarea",required:true},
+   {name:"order",label:"Order (lower shows first)",type:"number"}
+ ]}
+];
+let contentType="team",contentItems={team:[],gallery:[],testimonials:[],insights:[]},contentUnsub={},editingId=null;
+function cfgFor(key){return CONTENT_TYPES.find(t=>t.key===key)}
+function renderContentTabs(){
+ document.querySelector("#contentTabs").innerHTML=CONTENT_TYPES.map(t=>
+  `<button class="filter ${contentType===t.key?"active":""}" data-type="${t.key}">${esc(t.label)}</button>`).join("");
+ document.querySelectorAll("#contentTabs .filter").forEach(b=>b.onclick=()=>{
+  contentType=b.dataset.type;editingId=null;renderContentTabs();renderContentForm();renderContentList();
+ });
+}
+function renderContentForm(){
+ const cfg=cfgFor(contentType),editing=editingId?(contentItems[contentType]||[]).find(i=>i.id===editingId):null;
+ document.querySelector("#contentForm").innerHTML=`
+  <div class="eyebrow">${editing?"Edit":"Add new"} ${esc(cfg.label)} item</div>
+  <form id="contentFormEl">
+   ${cfg.fields.map(f=>`<label>${esc(f.label)}</label>${
+     f.type==="textarea"
+      ?`<textarea name="${f.name}" ${f.required?"required":""}>${editing?esc(editing[f.name]??""):""}</textarea>`
+      :`<input name="${f.name}" type="${f.type}" ${f.required?"required":""} value="${editing?esc(editing[f.name]??""):""}">`
+   }`).join("")}
+   <div style="display:flex;gap:10px;margin-top:18px">
+    <button type="submit" class="btn primary">${editing?"Save changes":"Add to website"}</button>
+    ${editing?'<button type="button" id="cancelEdit" class="btn secondary">Cancel</button>':""}
+   </div>
+  </form>`;
+ document.querySelector("#contentFormEl").onsubmit=submitContentForm;
+ if(editing)document.querySelector("#cancelEdit").onclick=()=>{editingId=null;renderContentForm()};
+}
+async function submitContentForm(e){
+ e.preventDefault();
+ const cfg=cfgFor(contentType),data=new FormData(e.target),payload={};
+ cfg.fields.forEach(f=>{
+  let v=data.get(f.name);
+  payload[f.name]=f.type==="number"?(v?Number(v):0):String(v||"").trim();
+ });
+ try{
+  if(editingId){
+   await updateDoc(doc(db,cfg.collection,editingId),payload);
+   toast("Updated on the website.");editingId=null;
+  }else{
+   await addDoc(collection(db,cfg.collection),payload);
+   toast("Added to the website.");
+  }
+  renderContentForm();
+ }catch(err){toast("Could not save: "+err.message)}
+}
+function renderContentList(){
+ const cfg=cfgFor(contentType),box=document.querySelector("#contentList");
+ const items=(contentItems[contentType]||[]).slice().sort((a,b)=>(a.order||0)-(b.order||0));
+ if(!items.length){
+  box.innerHTML=`<div class="empty"><div><div style="font-size:36px;color:var(--gold)">⚖</div><b>Nothing added yet</b><div>This section is hidden on the live website until you add an item here.</div></div></div>`;
+  return;
+ }
+ const sub=cfg.fields.filter(f=>f.name!=="imageUrl"&&f.name!=="order"&&f.name!==cfg.titleField);
+ box.innerHTML=`<div class="content-grid">${items.map(it=>`
+  <div class="content-card">
+   ${it.imageUrl?`<img class="content-media" src="${esc(it.imageUrl)}" loading="lazy" alt="${esc(it[cfg.titleField]||"")}">`
+     :`<div class="content-media empty">No image</div>`}
+   <div class="content-body">
+    <div class="content-title">${esc(it[cfg.titleField]||"Untitled")}</div>
+    ${sub.map(f=>it[f.name]?`<div class="content-sub">${esc(String(it[f.name]).slice(0,140))}</div>`:"").join("")}
+    <div class="content-foot">
+     <small class="muted">Order: ${it.order||0}</small>
+     <div class="content-actions">
+      <button class="link" data-edit="${it.id}">Edit</button>
+      <button class="link" data-del="${it.id}" style="color:#9a3030">Delete</button>
+     </div>
+    </div>
+   </div>
+  </div>`).join("")}</div>`;
+ box.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>{editingId=b.dataset.edit;renderContentForm();window.scrollTo({top:0,behavior:"smooth"})});
+ box.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{
+  if(!confirm("Remove this item from the live website?"))return;
+  try{await deleteDoc(doc(db,cfg.collection,b.dataset.del));toast("Removed from the website.")}catch(err){toast("Could not delete: "+err.message)}
+ });
+}
+function subscribeContent(){
+ CONTENT_TYPES.forEach(cfg=>{
+  if(contentUnsub[cfg.key])return;
+  contentUnsub[cfg.key]=onSnapshot(collection(db,cfg.collection),s=>{
+   contentItems[cfg.key]=s.docs.map(d=>({id:d.id,...d.data()}));
+   if(contentType===cfg.key)renderContentList();
+  },e=>toast("Could not load "+cfg.label+": "+e.message));
+ });
+}
+function unsubscribeContent(){Object.values(contentUnsub).forEach(u=>u&&u());contentUnsub={}}
+renderContentTabs();renderContentForm();renderContentList();
+document.querySelectorAll("#mainTabs .tab").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#mainTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+ const tab=b.dataset.tab;
+ document.querySelector("#messagesView").classList.toggle("hidden",tab!=="messages");
+ document.querySelector("#contentView").classList.toggle("hidden",tab!=="content");
+});
+
 document.querySelector("#loginForm").onsubmit=async e=>{e.preventDefault();err.classList.add("hidden");try{await signInWithEmailAndPassword(auth,document.querySelector("#email").value.trim(),document.querySelector("#password").value)}catch(e){showError("Sign-in failed. Check the username and password.")}};
 document.querySelector("#forgot").onclick=async()=>{const e=document.querySelector("#email").value.trim();if(!e)return showError("Enter your username/email first.");try{await sendPasswordResetEmail(auth,e);showError("Password reset email sent.");}catch(x){showError("Could not send the reset email.")}};
 document.querySelector("#logout").onclick=()=>signOut(auth);
 document.querySelector("#search").oninput=renderThreads;
-document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderThreads()});
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderThreads()});
 
 const firebaseApp=getApps().length?getApps()[0]:initializeApp(firebaseConfig);auth=getAuth(firebaseApp);db=getFirestore(firebaseApp);
 onAuthStateChanged(auth,user=>{
- if(!user){login.classList.remove("hidden");app.classList.add("hidden");if(unsubscribe)unsubscribe();return}
+ if(!user){login.classList.remove("hidden");app.classList.add("hidden");if(unsubscribe)unsubscribe();unsubscribeContent();return}
  login.classList.add("hidden");app.classList.remove("hidden");
  dataState={phase:"loading",error:null};renderStatus();
+ subscribeContent();
  unsubscribe=onSnapshot(collection(db,"fel_messages"),s=>{
    all=s.docs.map(d=>({id:d.id,...d.data()}));
    dataState={phase:"loaded",error:null};
