@@ -7,7 +7,7 @@
   'use strict';
 
   // --- CONFIG ---
-  const FORM_ENDPOINT = 'https://formsubmit.co/fel.icloud';
+  const FORM_ENDPOINT = 'https://formsubmit.co/felmbaya@icloud.com';
   const IDLE_TIMEOUT = 5000;
 
   // --- STATE ---
