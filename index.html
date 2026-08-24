@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<!-- Fel and Associates Pc-->
-<script>window.location.replace("page.html");</script>
-<meta http-equiv="refresh" content="0;url=page.html" />
-<link rel="canonical" href="page.html" />
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya</title>
 <meta name="description" content="FEL & Associates PC is a Nairobi-based law firm offering civil & commercial litigation, corporate law, real estate, family & succession, employment, criminal defense, contracts, and arbitration & mediation services across Kenya." />
@@ -103,10 +98,6 @@
 </script>
 </head>
 <body>
-<noscript>
-  <meta http-equiv="refresh" content="0;url=page.html" />
-</noscript>
-
 <!-- Crawlable content for search engines and AI systems that do not execute JavaScript -->
 <main>
   <h1>FEL & Associates PC — Advocates &amp; Legal Consultants in Nairobi, Kenya</h1>
@@ -141,7 +132,16 @@
     Location: Nairobi, Kenya
   </p>
 
-  <p><a href="page.html">Continue to the FEL &amp; Associates PC website →</a></p>
 </main>
+
+<script>
+  fetch("page.html")
+    .then(function (res) { return res.text(); })
+    .then(function (html) {
+      document.open();
+      document.write(html);
+      document.close();
+    });
+</script>
 </body>
 </html>
