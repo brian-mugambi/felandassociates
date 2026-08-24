@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya</title>
-<meta name="description" content="FEL & Associates PC is a Nairobi-based law firm offering civil & commercial litigation, corporate law, real estate, family & succession, employment, criminal defense, contracts, and arbitration & mediation services across Kenya." />
-<meta name="keywords" content="law firm Nairobi, advocates Kenya, legal services Kenya, commercial litigation Nairobi, corporate lawyer Kenya, real estate lawyer Nairobi, family law Kenya, employment lawyer Nairobi, criminal defense advocate Kenya, arbitration mediation Kenya, FEL & Associates PC" />
-<meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index, follow" />
-<meta name="author" content="FEL & Associates PC" />
-<meta name="geo.region" content="KE" />
-<meta name="geo.placename" content="Nairobi" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="FEL & Associates PC" />
-<meta property="og:title" content="FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya" />
-<meta property="og:description" content="Practical, client-focused legal representation and advisory across litigation, corporate law, real estate, family matters, employment, criminal defense, contracts, and arbitration." />
-<meta property="og:url" content="page.html" />
-<meta property="og:locale" content="en_KE" />
+  <title>FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya</title>
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya" />
-<meta name="twitter:description" content="Nairobi law firm providing litigation, corporate, real estate, family, employment, criminal defense, contract, and arbitration/mediation services across Kenya." />
+  <meta
+    name="description"
+    content="FEL & Associates PC is a Nairobi-based law firm offering civil & commercial litigation, corporate law, real estate, family & succession, employment, criminal defense, contracts, and arbitration & mediation services across Kenya."
+  />
 
-<!-- JSON-LD: LegalService -->
-<script type="application/ld+json">
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="FEL & Associates PC" />
+
+  <link rel="canonical" href="https://felandassociates.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FEL & Associates PC" />
+  <meta property="og:title" content="FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya" />
+  <meta
+    property="og:description"
+    content="Practical, client-focused legal representation and advisory across litigation, corporate law, real estate, family matters, employment, criminal defense, contracts, and arbitration."
+  />
+  <meta property="og:url" content="https://felandassociates.netlify.app/" />
+  <meta property="og:locale" content="en_KE" />
+
+  <!-- Add only if the image exists -->
+  <meta property="og:image" content="https://felandassociates.netlify.app/images/og-image.jpg" />
+  <meta property="og:image:alt" content="FEL & Associates PC — Advocates & Legal Consultants in Nairobi, Kenya" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FEL & Associates PC | Advocates & Legal Consultants in Nairobi, Kenya" />
+  <meta
+    name="twitter:description"
+    content="Nairobi law firm providing litigation, corporate, real estate, family, employment, criminal defense, contract, and arbitration/mediation services across Kenya."
+  />
+  <meta name="twitter:image" content="https://felandassociates.netlify.app/images/og-image.jpg" />
+
+  <!-- JSON-LD: LegalService -->
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "FEL & Associates PC",
-  "url": "page.html",
+  "url": "https://felandassociates.netlify.app/",
+  "logo": "https://felandassociates.netlify.app/images/og-image.jpg",
+  "image": "https://felandassociates.netlify.app/images/og-image.jpg",
   "description": "FEL & Associates PC is a Nairobi-based law firm providing practical, client-focused legal services including civil and commercial litigation, corporate and business law, real estate and property law, family and succession matters, employment and labour relations, criminal defense, contract and legal documentation, and arbitration and mediation.",
   "areaServed": {
     "@type": "Country",
@@ -61,10 +78,10 @@
     "Arbitration and Mediation"
   ]
 }
-</script>
+  </script>
 
-<!-- JSON-LD: FAQPage -->
-<script type="application/ld+json">
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -95,11 +112,11 @@
     }
   ]
 }
-</script>
+  </script>
 </head>
 <body>
-<!-- Crawlable content for search engines and AI systems that do not execute JavaScript -->
-<main>
+<!-- Crawlable content for search engines and AI. -->
+<main style="display:none">
   <h1>FEL & Associates PC — Advocates &amp; Legal Consultants in Nairobi, Kenya</h1>
   <p>
     FEL & Associates PC is a Nairobi-based law firm providing practical, client-focused
@@ -135,12 +152,21 @@
 </main>
 
 <script>
+  // Loads and runs
   fetch("page.html")
     .then(function (res) { return res.text(); })
     .then(function (html) {
       document.open();
       document.write(html);
       document.close();
+    })
+    .catch(function () {
+      // Fallback: fetch failed 
+      var iframe = document.createElement("iframe");
+      iframe.src = "page.html";
+      iframe.style.cssText = "position:fixed;inset:0;width:100%;height:100%;border:0;margin:0;padding:0;";
+      iframe.setAttribute("title", "FEL & Associates PC");
+      document.body.appendChild(iframe);
     });
 </script>
 </body>
