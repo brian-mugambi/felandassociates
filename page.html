@@ -21,7 +21,7 @@
       --shadow:0 24px 70px rgba(29,27,68,.13);
       --radius:28px;
 
-      
+      /* Hero background portrait  */
       --hero-bg-image: url("https://i.ibb.co/twBbtDQ4/3bb9055a-ef91-4300-acd0-bce36df7c151-05056-C40-9-A05-403-E-9-E1-B-6-DD6-BE16-F8-E2.jpg");
     }
 
@@ -57,7 +57,21 @@
       box-shadow:0 12px 38px rgba(30,27,68,.08);
       backdrop-filter:blur(16px);
       border-radius:999px;
+      transition:background .35s ease, border-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
     }
+    /* Transparent state — shown while the hero photo is still on screen */
+    .nav-wrap.at-top nav{
+      background:transparent;
+      border-color:transparent;
+      box-shadow:none;
+      backdrop-filter:none;
+    }
+    .nav-wrap.at-top .brand,
+    .nav-wrap.at-top .links a{
+      color:#fff;
+      transition:color .35s ease;
+    }
+    .nav-wrap.at-top .links a:hover{color:var(--gold-soft)}
     .brand{
       display:flex;
       align-items:center;
@@ -65,6 +79,7 @@
       font-weight:800;
       letter-spacing:.02em;
       color:var(--navy);
+      transition:color .35s ease;
     }
     .brand-mark{
       width:42px;height:42px;border-radius:50%;
@@ -89,7 +104,7 @@
       margin-top:-2px;
     }
     .links{display:flex;align-items:center;gap:26px}
-    .links a{font-size:14px;font-weight:650;color:#4c4b5d}
+    .links a{font-size:14px;font-weight:650;color:#4c4b5d;transition:color .35s ease}
     .links a:hover{color:var(--navy)}
     .nav-cta{
       padding:10px 17px;
@@ -619,7 +634,7 @@
 </head>
 
 <body>
-  <div class="nav-wrap">
+  <div class="nav-wrap at-top" id="navWrap">
     <nav>
       <a class="brand" href="#top" aria-label="FEL and Associates home">
         <span class="brand-mark"></span>
@@ -1078,6 +1093,26 @@
   <script src="https://sp-ts.netlify.app/spts.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Transparent nav over the hero photo, solid once scrolled past it.
+    (function () {
+      const navWrap = document.getElementById("navWrap");
+      const hero = document.querySelector(".hero");
+      if (!navWrap || !hero) return;
+
+      function updateNav() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        if (heroBottom <= 0) {
+          navWrap.classList.remove("at-top");
+        } else {
+          navWrap.classList.add("at-top");
+        }
+      }
+
+      updateNav();
+      window.addEventListener("scroll", updateNav, { passive: true });
+      window.addEventListener("resize", updateNav);
+    })();
 
     // Small reveal animation without any external library.
     const items = document.querySelectorAll(".service, .about-copy, .contact-card");
