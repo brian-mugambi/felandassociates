@@ -186,11 +186,16 @@
 
       try {
         const data = new FormData(form);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
         const response = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           body: data,
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Accept': 'application/json' },
+          signal: controller.signal
         });
+        clearTimeout(timeoutId);
 
         if (response.ok) {
           const body = document.getElementById('fel-body');
@@ -207,9 +212,24 @@
       } catch (err) {
         btn.disabled = false;
         btn.innerHTML = `${ICONS.send} Send Message`;
+
+        // Build mailto fallback pre-filled with the user's message
+        const mailSubject = encodeURIComponent(subject.value.trim() || 'New Contact Form - FEL & Associates');
+        const mailBody = encodeURIComponent(
+          `Name: ${name.value.trim()}\n` +
+          `Email: ${email.value.trim()}\n` +
+          `Phone: ${document.getElementById('fel-phone')?.value.trim() || 'N/A'}\n\n` +
+          `Message:\n${message.value.trim()}`
+        );
+        const mailtoLink = `mailto:felmbaya@icloud.com?subject=${mailSubject}&body=${mailBody}`;
+
         const errDiv = document.createElement('div');
         errDiv.className = 'fel-error';
-        errDiv.textContent = 'Failed to send. Please try again or call +254 116 090 356';
+        errDiv.innerHTML = `
+          Failed to send automatically. You can
+          <a href="${mailtoLink}" style="color:#252a61;font-weight:700;text-decoration:underline;">email us directly</a>
+          or <a href="tel:+254116090356" style="color:#252a61;font-weight:700;text-decoration:underline;">call +254 116 090 356</a>.
+        `;
         form.appendChild(errDiv);
       }
     });
