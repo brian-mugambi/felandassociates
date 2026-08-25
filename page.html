@@ -213,7 +213,14 @@
     .btn.secondary:hover{background:#fff}
     .hero .btn.secondary{color:#fff;border-color:rgba(255,255,255,.65)}
     .hero .btn.secondary:hover{background:rgba(255,255,255,.12)}
-
+.btn.book-consult {
+  background: transparent;
+  border: 1px solid #252a61;
+  color: #252a61;
+}
+.btn.book-consult:hover {
+  background: rgba(37,42,97,0.06);
+}
     /* Business card inspired panel */
     .card-scene{
       position:relative;
@@ -667,8 +674,11 @@
             across litigation, business, property, family, employment and dispute resolution.
           </p>
           <div class="actions">
-            <a class="btn primary" href="#contact">Speak with us</a>
-            <a class="btn secondary" href="#services">Explore services</a>
+  <a class="btn primary" href="#contact">Speak with us</a>
+  <a class="btn secondary" href="#services">Explore services</a>
+  <button class="btn book-consult" id="fel-book-btn" onclick="window._felOpen && window._felOpen(); this.style.display='none';" type="button">
+    Book Consultation
+  </button>
           </div>
         </div>
 
