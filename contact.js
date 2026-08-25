@@ -14,6 +14,7 @@
   let isOpen = false;
   let isClosedThisSession = false;
   let idleTimer = null;
+  let idleTickInterval = null;
   let hasInteracted = false;
 
   // --- ICONS ---
@@ -255,23 +256,58 @@
       document.addEventListener(event, function() {
         hasInteracted = true;
         clearTimeout(idleTimer);
+        clearInterval(idleTickInterval);
+        document.dispatchEvent(new CustomEvent('fel:idleinterrupt'));
       }, { once: true });
     });
   }
 
   // --- START TIMER ---
   function startTimer() {
+    let secondsLeft = Math.ceil(IDLE_TIMEOUT / 1000);
+    document.dispatchEvent(new CustomEvent('fel:idletick', { detail: { secondsLeft } }));
+
+    idleTickInterval = setInterval(() => {
+      secondsLeft -= 1;
+      if (secondsLeft >= 0) {
+        document.dispatchEvent(new CustomEvent('fel:idletick', { detail: { secondsLeft } }));
+      }
+    }, 1000);
+
     idleTimer = setTimeout(() => {
+      clearInterval(idleTickInterval);
       if (!hasInteracted && !isClosedThisSession) {
+        document.dispatchEvent(new CustomEvent('fel:autoopen'));
         if (window._felOpen) window._felOpen();
       }
     }, IDLE_TIMEOUT);
+  }
+
+  // --- WIRE UP BOOK CONSULTATION BUTTON (existing HTML element) ---
+  function buildBookButton() {
+    const btn = document.getElementById('fel-book-btn');
+    if (!btn) return;
+
+    const label = btn.textContent.trim();
+
+    document.addEventListener('fel:idletick', (e) => {
+      btn.textContent = `${label} (${e.detail.secondsLeft})`;
+    });
+
+    document.addEventListener('fel:idleinterrupt', () => {
+      btn.textContent = label;
+    });
+
+    document.addEventListener('fel:autoopen', () => {
+      btn.style.display = 'none';
+    });
   }
 
   // --- INIT ---
   function init() {
     injectStyles();
     buildModal();
+    buildBookButton();
     trackInteraction();
     if (document.readyState === 'complete') {
       startTimer();
