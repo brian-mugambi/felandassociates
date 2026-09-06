@@ -2,20 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#171b46">
 <title>FEL & Associates PC | Team Admin</title>
 <style>
-:root{--navy:#252a61;--deep:#171b46;--gold:#d6a63b;--gold-soft:#edcf83;--lav:#f3eff9;--paper:#fbf9fd;--ink:#24243a;--muted:#6d6b7c;--line:rgba(37,42,97,.12);--white:#fff;--shadow:0 24px 70px rgba(29,27,68,.13)}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.hidden{display:none!important}
-.login{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 10% 10%,rgba(37,42,97,.07),transparent 35%),radial-gradient(circle at 90% 90%,rgba(214,166,59,.09),transparent 35%)}
-.login-card{width:min(440px,100%);padding:38px;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow)}.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--navy)}.mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold-soft);font-size:21px;box-shadow:0 7px 20px rgba(37,42,97,.18)}.brand small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);margin-top:-2px}
-.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:850;color:var(--gold)}h1{margin:6px 0;color:var(--deep);font-size:38px;line-height:1;letter-spacing:-.045em}.muted{color:var(--muted);font-size:14px;line-height:1.55}
-label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin:18px 0 7px}input,textarea,select{font:inherit;width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;outline:0;background:#fff;color:var(--ink)}input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,166,59,.12)}
-.btn{border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer}.primary{background:var(--navy);color:#fff}.secondary{background:var(--lav);color:var(--navy)}.login .btn{width:100%;margin-top:20px}.link{border:0;background:none;color:var(--navy);font-weight:750;cursor:pointer;padding:10px 0}.error{margin-top:14px;background:#fff2f2;color:#9a3030;border-radius:12px;padding:10px;font-size:13px}.secure{text-align:center;color:var(--muted);font-size:11px;margin-top:15px}
-header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}.header-inner{width:min(1200px,calc(100% - 28px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between}.wrap{width:min(1200px,calc(100% - 28px));margin:32px auto}.title-row{display:flex;justify-content:space-between;gap:20px;align-items:end}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 12px 35px rgba(29,27,68,.06);transition:transform .15s ease,box-shadow .15s ease}.stat:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(29,27,68,.1)}.stat strong{display:block;font-size:28px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filter{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 13px;font-size:12px;font-weight:800;cursor:pointer}.filter.active{background:var(--navy);color:#fff}
-.layout{display:grid;grid-template-columns:340px 1fr;gap:16px}.panel{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(29,27,68,.07);overflow:hidden}.inbox{padding:14px;min-height:570px}.thread{padding:14px;border-radius:16px;border:1px solid transparent;cursor:pointer;margin-bottom:6px;transition:background .12s ease,border-color .12s ease}.thread:hover,.thread.active{background:var(--lav);border-color:rgba(214,166,59,.3)}.thread strong{display:block;color:var(--navy)}.thread small{color:var(--muted)}.badge{float:right;background:var(--gold);color:#fff;border-radius:99px;padding:3px 8px;font-size:9px;font-weight:850;text-transform:uppercase}
-.conversation{min-height:570px;display:flex;flex-direction:column}.convhead{padding:22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px}.messages{flex:1;min-height:360px;max-height:470px;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:10px}.bubble{max-width:78%;padding:12px 15px;border-radius:16px;line-height:1.5;font-size:14px}.client{align-self:flex-start;background:var(--lav);border-bottom-left-radius:4px}.team{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}.meta{font-size:9px;opacity:.55;margin-top:5px}.reply{border-top:1px solid var(--line);padding:15px;display:flex;gap:10px}.reply textarea{min-height:70px;resize:vertical}.reply .btn{align-self:flex-end;white-space:nowrap}.empty{flex:1;display:grid;place-items:center;text-align:center;color:var(--muted);padding:40px}.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:30}
+:root{--navy:#252a61;--deep:#171b46;--gold:#d6a63b;--gold-soft:#edcf83;--lav:#f3eff9;--paper:#fbf9fd;--ink:#24243a;--muted:#6d6b7c;--line:rgba(37,42,97,.12);--white:#fff;--shadow:0 24px 70px rgba(29,27,68,.13);--sat:env(safe-area-inset-top,0px);--sar:env(safe-area-inset-right,0px);--sab:env(safe-area-inset-bottom,0px);--sal:env(safe-area-inset-left,0px)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+.hidden{display:none!important}
+.login{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:20px;padding-top:calc(20px + var(--sat));padding-bottom:calc(20px + var(--sab));background:radial-gradient(circle at 10% 10%,rgba(37,42,97,.07),transparent 35%),radial-gradient(circle at 90% 90%,rgba(214,166,59,.09),transparent 35%)}
+.login-card{width:min(440px,100%);padding:30px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--navy);min-width:0}
+.brand>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.mark{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold-soft);font-size:21px;box-shadow:0 7px 20px rgba(37,42,97,.18)}
+.brand small{display:block;font-size:10px;letter-spacing:.18em;color:var(--gold);margin-top:-2px}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:850;color:var(--gold)}
+h1{margin:6px 0;color:var(--deep);font-size:clamp(26px,7vw,38px);line-height:1.05;letter-spacing:-.03em}
+.muted{color:var(--muted);font-size:14px;line-height:1.55}
+label{display:block;font-size:12px;font-weight:800;color:var(--navy);margin:16px 0 7px}
+input,textarea,select{font:inherit;font-size:16px;width:100%;border:1px solid var(--line);border-radius:14px;padding:12px 14px;outline:0;background:#fff;color:var(--ink)}
+input:focus,textarea:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(214,166,59,.12)}
+.btn{border:0;border-radius:999px;padding:13px 18px;font-weight:800;cursor:pointer;font-size:14px;min-height:44px;-webkit-appearance:none}
+.primary{background:var(--navy);color:#fff}.secondary{background:var(--lav);color:var(--navy)}
+.login .btn{width:100%;margin-top:20px}
+.link{border:0;background:none;color:var(--navy);font-weight:750;cursor:pointer;padding:10px 0;font-size:14px;min-height:40px}
+.error{margin-top:14px;background:#fff2f2;color:#9a3030;border-radius:12px;padding:10px;font-size:13px}
+.secure{text-align:center;color:var(--muted);font-size:11px;margin-top:15px}
+header{min-height:64px;background:rgba(251,249,253,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(14px);position:sticky;top:0;z-index:20;padding-top:var(--sat)}
+.header-inner{width:min(1200px,calc(100% - 24px));min-height:64px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.wrap{width:min(1200px,calc(100% - 24px));margin:24px auto;padding-bottom:calc(24px + var(--sab))}
+.title-row{display:flex;justify-content:space-between;gap:16px;align-items:end;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 12px 35px rgba(29,27,68,.06)}
+.stat strong{display:block;font-size:24px;color:var(--navy)}.stat span{font-size:11px;color:var(--muted)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.filter{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:9px 14px;font-size:12px;font-weight:800;cursor:pointer;min-height:38px}
+.filter.active{background:var(--navy);color:#fff}
+.layout{display:grid;grid-template-columns:340px 1fr;gap:14px}
+.content-layout{grid-template-columns:340px 1fr}
+.panel{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 16px 45px rgba(29,27,68,.07);overflow:hidden}
+.inbox{padding:14px;min-height:570px}
+.thread{padding:14px;border-radius:16px;border:1px solid transparent;cursor:pointer;margin-bottom:6px;transition:background .12s ease,border-color .12s ease}
+.thread:hover,.thread.active{background:var(--lav);border-color:rgba(214,166,59,.3)}
+.thread strong{display:block;color:var(--navy)}.thread small{color:var(--muted)}
+.badge{float:right;background:var(--gold);color:#fff;border-radius:99px;padding:3px 8px;font-size:9px;font-weight:850;text-transform:uppercase}
+.conversation{min-height:570px;display:flex;flex-direction:column}
+.convhead{padding:18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.backbtn{display:none;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:8px 13px;font-weight:800;font-size:12px;cursor:pointer;min-height:36px}
+.messages{flex:1;min-height:300px;max-height:470px;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
+.bubble{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.5;font-size:14px;word-wrap:break-word}
+.client{align-self:flex-start;background:var(--lav);border-bottom-left-radius:4px}
+.team{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
+.meta{font-size:9px;opacity:.55;margin-top:5px}
+.reply{border-top:1px solid var(--line);padding:14px;display:flex;gap:10px;padding-bottom:calc(14px + var(--sab))}
+.reply textarea{min-height:60px;resize:vertical}
+.reply .btn{align-self:flex-end;white-space:nowrap}
+.empty{flex:1;display:grid;place-items:center;text-align:center;color:var(--muted);padding:34px}
+.toast{position:fixed;right:16px;left:16px;bottom:calc(16px + var(--sab));background:var(--navy);color:#fff;padding:13px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:60;text-align:center;font-size:13px}
+@media(min-width:520px){.toast{left:auto;right:20px;max-width:340px;text-align:left}}
 .datastatus{margin:0 0 16px;padding:12px 16px;border-radius:14px;font-size:13px;line-height:1.5;border:1px solid var(--line);background:var(--lav);color:var(--navy)}
 .datastatus.warn{background:#fff8e6;border-color:rgba(214,166,59,.4);color:#7a5c10}
 .datastatus.err{background:#fff2f2;border-color:rgba(154,48,48,.3);color:#9a3030}
@@ -23,26 +70,105 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
 .tabs{display:flex;gap:8px}
 .tab{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer}
 .tab.active{background:var(--navy);color:#fff}
-.formpanel{padding:22px}
-.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.content-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;transition:transform .15s ease,box-shadow .15s ease}.content-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(29,27,68,.09)}
+.formpanel{padding:20px}
+.content-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.content-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
 .content-media{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--lav)}
 .content-media.empty{display:grid;place-items:center;color:var(--muted);font-size:12px}
 .content-body{padding:12px 14px}
 .content-title{font-weight:800;color:var(--navy);font-size:14px}
 .content-sub{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
-.content-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.content-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px}
 .content-actions{display:flex;gap:10px}
 .content-actions button{font-size:12px}
-@media(max-width:850px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.inbox{min-height:auto}.messages{max-height:420px}}
+
+/* ---- nav / dropdown ---- */
+.navwrap{position:relative;flex:none}
+.profile-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 6px;cursor:pointer;min-height:44px}
+.avatar{border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;overflow:hidden;flex:none}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-sm{width:32px;height:32px;font-size:13px}
+.avatar-lg{width:76px;height:76px;font-size:26px}
+.menu-name{font-weight:750;font-size:13px;color:var(--navy);max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.caret{font-size:10px;color:var(--muted)}
+.dropdown{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-width:220px;padding:8px;z-index:30}
+.dropitem{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;padding:11px 12px;border-radius:11px;font-weight:750;font-size:14px;color:var(--ink);cursor:pointer;min-height:44px}
+.dropitem:hover,.dropitem.active{background:var(--lav);color:var(--navy)}
+.dropitem.danger{color:#9a3030}
+.dropitem.danger:hover{background:#fff2f2}
+.dropdiv{height:1px;background:var(--line);margin:6px 4px}
+
+/* ---- dashboard ---- */
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.quick-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;text-align:left;cursor:pointer;box-shadow:0 12px 35px rgba(29,27,68,.06);min-height:44px}
+.quick-card b{display:block;color:var(--navy);font-size:14px}
+.quick-card span{font-size:12px;color:var(--muted)}
+.recent-item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px;border-radius:14px;cursor:pointer}
+.recent-item:hover{background:var(--lav)}
+
+/* ---- locked name field note ---- */
+.lock-note{font-size:12px;color:#7a5c10;background:#fff8e6;border:1px solid rgba(214,166,59,.4);border-radius:12px;padding:10px 12px;margin-top:8px}
+
+/* ---- settings / onboarding ---- */
+.avatar-row{display:flex;align-items:center;gap:16px;margin:16px 0}
+.avatar-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.filebtn{display:inline-flex;align-items:center;justify-content:center;text-align:center;cursor:pointer}
+.hint{font-size:12px;color:var(--muted);margin-top:-2px}
+.danger-zone{border-color:rgba(154,48,48,.25)}
+.modal-overlay{position:fixed;inset:0;background:rgba(23,27,70,.55);display:grid;place-items:center;padding:20px;padding-top:calc(20px + var(--sat));padding-bottom:calc(20px + var(--sab));z-index:50;overflow:auto}
+
+@media(max-width:850px){
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .layout,.content-layout{grid-template-columns:1fr}
+ .inbox{min-height:auto}
+ .messages{max-height:420px}
+ .quick-grid{grid-template-columns:1fr 1fr}
+ /* stacked inbox/conversation get a mobile "screen" feel */
+ .layout.msg-layout .inbox{display:block}
+ .layout.msg-layout.conv-open .inbox{display:none}
+ .layout.msg-layout.conv-open .conversation{display:flex}
+ .backbtn{display:inline-flex}
+}
+@media(max-width:600px){
+ .brand small{display:none}
+ .brand{font-size:14px}
+ .mark{width:36px;height:36px;font-size:18px}
+ .menu-name{display:none}
+ .wrap{margin:16px auto}
+ .quick-grid{grid-template-columns:1fr}
+ .content-grid{grid-template-columns:1fr 1fr}
+ .avatar-row{gap:12px}
+}
+/* ---- delete controls ---- */
+.bubble{position:relative}
+.msgdel{border:0;background:none;cursor:pointer;font-size:11px;opacity:.6;padding:0 0 0 8px;font-weight:750}
+.msgdel:hover{opacity:1;color:#c0392b}
+.team .msgdel{color:#fff}
+.convhead-actions{display:flex;gap:8px;align-items:center;flex:none}
+.btn-danger-sm{background:#9a3030;color:#fff;padding:8px 14px;font-size:12px;min-height:36px;white-space:nowrap}
+.btn-danger-sm:hover{background:#7f2626}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.field-error{color:#9a3030;font-size:12px;margin-top:6px;min-height:16px}
+input.invalid{border-color:#c0392b}
+
+/* ---- activity log ---- */
+.log-item{display:flex;gap:12px;padding:14px 8px;border-bottom:1px solid var(--line)}
+.log-item:last-child{border-bottom:0}
+.log-avatar{flex:none}
+.log-body{min-width:0}
+.log-action{font-weight:800;color:var(--navy);font-size:13px}
+.log-detail{color:var(--muted);font-size:13px;margin-top:2px;word-break:break-word}
+.log-time{color:var(--muted);font-size:11px;margin-top:4px}
+.log-lockline{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin-bottom:8px}
+
+@media(max-width:380px){.content-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <section id="login" class="login">
  <div class="login-card">
   <div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div>
-  <div style="margin-top:30px" class="eyebrow">Admin</div>
-
+  <div style="margin-top:26px" class="eyebrow">Admin</div>
   <p class="muted">Sign in.</p>
   <form id="loginForm">
    <label for="email">Username</label><input id="email" type="email" autocomplete="username" placeholder="Type..." required>
@@ -51,31 +177,143 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
   </form>
   <button id="forgot" class="link">Forgot password?</button>
   <div id="loginError" class="error hidden"></div>
-  <div class="secure">Desktop Version not suitable on mobile view</div>
+  <div class="secure">Works on desktop and mobile.</div>
  </div>
 </section>
 
+<!-- First-time onboarding -->
+<div id="onboarding" class="modal-overlay hidden">
+ <div class="login-card">
+  <div class="eyebrow">Welcome</div>
+  <h1 style="font-size:26px">Set up your profile</h1>
+  <p class="muted">Just once — add your name so the team knows who's replying. A photo is optional.</p>
+  <div class="avatar-row">
+   <div id="onboardAvatarPreview" class="avatar avatar-lg">?</div>
+   <div class="avatar-actions">
+    <label class="btn secondary filebtn">Add photo<input type="file" id="onboardPhotoInput" accept="image/*" hidden></label>
+    <span class="hint">Optional — you can skip this</span>
+   </div>
+  </div>
+  <form id="onboardForm">
+   <label for="onboardName">Full name</label>
+   <input id="onboardName" required placeholder="e.g. Jordan Ellis">
+   <button class="btn primary" type="submit" style="width:100%;margin-top:20px">Continue</button>
+  </form>
+ </div>
+</div>
+
+<!-- Suspended / not-yet-approved -->
+<div id="suspended" class="modal-overlay hidden">
+ <div class="login-card">
+  <div class="eyebrow">Account pending</div>
+  <h1 style="font-size:26px">Access suspended</h1>
+  <p class="muted">Your login was successful, but this account hasn't been approved for admin access yet. Ask a firm administrator to approve <b id="suspendedEmail"></b> in the system before you can view or use this admin page.</p>
+  <button id="suspendedLogout" class="btn secondary" style="width:100%;margin-top:16px">Sign out</button>
+ </div>
+</div>
+
 <section id="app" class="hidden">
-<header><div class="header-inner"><div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div><div style="display:flex;gap:14px;align-items:center"><div class="tabs" id="mainTabs"><button class="tab active" data-tab="messages">Messages</button><button class="tab" data-tab="content">Website Content</button></div><button id="logout" class="btn secondary">Sign out</button></div></div></header>
+<header><div class="header-inner">
+ <div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div>
+ <div class="navwrap">
+  <button id="menuBtn" class="profile-btn" aria-haspopup="true" aria-expanded="false">
+   <span id="avatarSmall" class="avatar avatar-sm">?</span>
+   <span id="menuName" class="menu-name">Account</span>
+   <span class="caret">▾</span>
+  </button>
+  <div id="dropdown" class="dropdown hidden">
+   <button class="dropitem" data-view="dashboard">Dashboard</button>
+   <button class="dropitem" data-view="messages">Messages</button>
+   <button class="dropitem" data-view="content">Website Content</button>
+   <button class="dropitem" data-view="activity">Activity Log</button>
+   <button class="dropitem" data-view="settings">Settings</button>
+   <div class="dropdiv"></div>
+   <button class="dropitem danger" id="logout">Sign out</button>
+  </div>
+ </div>
+</div></header>
+
 <main class="wrap">
-<div id="messagesView">
+
+<div id="dashboardView">
+ <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1 id="dashGreeting">Dashboard</h1><p class="muted">A quick overview of client messages and website content.</p></div></div>
+ <div id="dashStatus" class="datastatus hidden"></div>
+ <div class="stats">
+  <div class="stat"><span>Total messages</span><strong id="total">0</strong></div>
+  <div class="stat"><span>New client messages</span><strong id="newCount">0</strong></div>
+  <div class="stat"><span>Open conversations</span><strong id="openCount">0</strong></div>
+  <div class="stat"><span>Replies sent</span><strong id="replyCount">0</strong></div>
+ </div>
+ <div class="quick-grid">
+  <button class="quick-card" data-view="messages"><b>Messages</b><span>Reply to clients</span></button>
+  <button class="quick-card" data-view="content"><b>Website Content</b><span>Team, gallery & more</span></button>
+  <button class="quick-card" data-view="activity"><b>Activity Log</b><span>Who changed what</span></button>
+  <button class="quick-card" data-view="settings"><b>Settings</b><span>Your profile</span></button>
+ </div>
+ <div class="panel formpanel">
+  <div class="eyebrow" style="margin-bottom:10px">Recent unread</div>
+  <div id="recentList"></div>
+ </div>
+</div>
+
+<div id="messagesView" class="hidden">
  <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Client Messages</h1><p class="muted">Live website conversations — each conversation is one document in <b>fel_messages</b>, keyed by its <b>conversationId</b>.</p></div></div>
  <div id="dataStatus" class="datastatus hidden"></div>
- <div class="stats"><div class="stat"><span>Total messages</span><strong id="total">0</strong></div><div class="stat"><span>New client messages</span><strong id="newCount">0</strong></div><div class="stat"><span>Open conversations</span><strong id="openCount">0</strong></div><div class="stat"><span>Replies sent</span><strong id="replyCount">0</strong></div></div>
  <div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="unread">Unread</button><button class="filter" data-filter="replied">Replied</button></div>
- <div class="layout">
+ <div class="layout msg-layout" id="msgLayout">
   <aside class="panel inbox"><input id="search" placeholder="Search client messages…"><div id="threads" style="margin-top:12px"></div></aside>
   <section class="panel conversation" id="conversation"><div class="empty"><div><div style="font-size:40px;color:var(--gold)">⚖</div><b>Select a conversation</b><div>Client messages from the website will appear here.</div></div></div></section>
  </div>
 </div>
+
 <div id="contentView" class="hidden">
  <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Website Content</h1><p class="muted">Feed the Team, Gallery, Testimonials and Insights sections on the live website. Each section stays hidden on the site until at least one item is added here.</p></div></div>
  <div class="filters" id="contentTabs"></div>
- <div class="layout" style="grid-template-columns:360px 1fr">
+ <div class="layout content-layout">
   <aside class="panel formpanel" id="contentForm"></aside>
   <section class="panel formpanel" id="contentList"></section>
  </div>
 </div>
+
+<div id="activityView" class="hidden">
+ <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Activity Log</h1><p class="muted">Every add, edit, and delete an admin makes, with their name and photo for accountability.</p></div></div>
+ <div class="panel formpanel">
+  <div class="log-lockline"><span>Permanent record — entries here cannot be edited or deleted by any admin.</span></div>
+  <div id="activityList"><p class="muted">Loading activity…</p></div>
+ </div>
+</div>
+
+<div id="settingsView" class="hidden">
+ <div class="title-row"><div><div class="eyebrow">Firm workspace</div><h1>Settings</h1><p class="muted">Manage your admin profile.</p></div></div>
+ <div class="layout" style="grid-template-columns:1fr;max-width:520px">
+  <section class="panel formpanel">
+   <div class="eyebrow" style="margin-bottom:6px">Your profile</div>
+   <div class="avatar-row">
+    <div id="avatarPreview" class="avatar avatar-lg">?</div>
+    <div class="avatar-actions">
+     <label class="btn secondary filebtn">Change photo<input type="file" id="photoInput" accept="image/*" hidden></label>
+     <button type="button" id="removePhoto" class="link" style="color:#9a3030;padding:0">Remove photo</button>
+    </div>
+   </div>
+   <form id="profileForm">
+    <label for="fullNameInput">Full name</label><input id="fullNameInput" required autocomplete="off">
+    <div id="nameConfirmWrap">
+     <label for="fullNameConfirm">Confirm full name</label><input id="fullNameConfirm" placeholder="Re-type the name above to confirm" autocomplete="off">
+    </div>
+    <div id="nameLockNote" class="lock-note hidden">Your name has already been changed once and is now locked for accountability in the activity log. Contact a firm administrator if this needs correcting.</div>
+    <div id="nameFieldError" class="field-error hidden"></div>
+    <label for="emailDisplay">Email / username</label><input id="emailDisplay" disabled>
+    <button class="btn primary" type="submit" style="margin-top:18px">Save changes</button>
+   </form>
+  </section>
+  <section class="panel formpanel danger-zone">
+   <div class="eyebrow" style="color:#9a3030;margin-bottom:6px">Danger zone</div>
+   <p class="muted">Remove your saved name and photo. You'll be asked to set them up again next time you sign in.</p>
+   <button id="deleteProfileBtn" class="btn" style="background:#9a3030;color:#fff">Delete profile info</button>
+  </section>
+ </div>
+</div>
+
 </main>
 </section>
 <div id="toast" class="toast hidden"></div>
@@ -83,7 +321,7 @@ header{height:72px;background:rgba(251,249,253,.9);border-bottom:1px solid var(-
 <script type="module">
 import {initializeApp,getApps} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {getAuth,signInWithEmailAndPassword,sendPasswordResetEmail,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-import {getFirestore,collection,onSnapshot,doc,setDoc,arrayUnion,addDoc,deleteDoc,updateDoc} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import {getFirestore,collection,onSnapshot,doc,setDoc,arrayUnion,addDoc,deleteDoc,updateDoc,query,orderBy,limit} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBgpHpRUYlgkPVDLlZUsSebqTuPTCx8ZUk",
   authDomain: "fel-and-associates.firebaseapp.com",
@@ -94,47 +332,292 @@ const firebaseConfig = {
   measurementId: "G-T5C8V3CMSD",
   databaseURL: "https://fel-and-associates-default-rtdb.firebaseio.com/"
 };
-const login=document.querySelector("#login"),app=document.querySelector("#app"),err=document.querySelector("#loginError");
+const login=document.querySelector("#login"),app=document.querySelector("#app"),err=document.querySelector("#loginError"),onboarding=document.querySelector("#onboarding"),suspended=document.querySelector("#suspended");
 let auth,db,all=[],selected=null,unsubscribe=null,filter="all";
 let dataState={phase:"idle",error:null}; // phase: idle | loading | loaded
+let currentUser=null,profile=null,pendingOnboardPhoto="",pendingSettingsPhoto=undefined;
+let profileUnsub=null,appStarted=false,creatingProfileDoc=false;
 
 function showError(x){err.textContent=x;err.classList.remove("hidden")}
-function renderStatus(){
- const s=document.querySelector("#dataStatus");
- if(dataState.phase==="loading"){
-   s.className="datastatus";s.textContent="Connecting to Firestore…";s.classList.remove("hidden");return;
- }
- if(dataState.phase==="error"){
-   s.className="datastatus err";
-   s.textContent="⚠ Can't reach the messages collection: "+dataState.error+". If this says 'permission-denied', the signed-in account's Firestore security rules don't allow reading fel_messages.";
-   s.classList.remove("hidden");return;
- }
- // phase === loaded
- if(all.length===0){
-   s.className="datastatus warn";
-   s.textContent="Connected to Firestore, but the fel_messages collection is empty — no conversations have been received from the website yet.";
-   s.classList.remove("hidden");return;
- }
- const allMsgs=all.flatMap(c=>Array.isArray(c.messages)?c.messages:[]);
- if(allMsgs.length===0){
-   s.className="datastatus warn";
-   s.textContent=`Connected — ${all.length} conversation document(s) found, but none contain a "messages" array. Check that the website is writing to doc.messages via arrayUnion, not to a top-level field.`;
-   s.classList.remove("hidden");return;
- }
- const clientCount=allMsgs.filter(isClient).length;
- if(clientCount===0){
-   const fromValues=[...new Set(allMsgs.map(m=>m.from))];
-   s.className="datastatus warn";
-   s.textContent=`Connected — ${allMsgs.length} message(s) loaded, but none have from:"user" (what this page looks for as a client message). Actual "from" values found: ${fromValues.map(v=>JSON.stringify(v)).join(", ")||"(none)"}. The website is likely writing a different value — update isClient() to match it.`;
-   s.classList.remove("hidden");return;
- }
- s.classList.add("hidden");
-}
 function toast(x){const t=document.querySelector("#toast");t.textContent=x;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),2600)}
 function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function time(x){try{return new Date(x).toLocaleString()}catch{return ""}}
 function isClient(m){return m.from==="user"}
-// --- Conversations: one Firestore doc per conversationId, doc.data().messages = array of messages ---
+function initials(name){return String(name||"?").trim().split(/\s+/).slice(0,2).map(w=>w[0]?.toUpperCase()||"").join("")||"?"}
+
+/* ---------- image resize helper (avoids needing Firebase Storage rules) ---------- */
+function fileToResizedDataURL(file,maxDim=220,quality=.82){
+ return new Promise((resolve,reject)=>{
+  if(!file.type||!file.type.startsWith("image/"))return reject(new Error("Please choose an image file."));
+  if(file.size>8*1024*1024)return reject(new Error("Image is too large (max 8MB)."));
+  const img=new Image(),reader=new FileReader();
+  reader.onerror=()=>reject(new Error("Could not read the file."));
+  reader.onload=()=>{
+   img.onerror=()=>reject(new Error("Could not read the image."));
+   img.onload=()=>{
+    let w=img.width,h=img.height;
+    if(w>h){if(w>maxDim){h=Math.round(h*maxDim/w);w=maxDim}}else{if(h>maxDim){w=Math.round(w*maxDim/h);h=maxDim}}
+    const c=document.createElement("canvas");c.width=w;c.height=h;
+    c.getContext("2d").drawImage(img,0,0,w,h);
+    resolve(c.toDataURL("image/jpeg",quality));
+   };
+   img.src=reader.result;
+  };
+  reader.readAsDataURL(file);
+ });
+}
+function setAvatarEl(el,name,photoURL){
+ el.textContent="";
+ if(photoURL){const img=document.createElement("img");img.src=photoURL;img.alt=name||"Profile photo";el.appendChild(img)}
+ else{el.textContent=initials(name)}
+}
+
+/* ---------- activity log (append-only; nothing in this file ever calls deleteDoc/updateDoc on it) ---------- */
+let activityLogs=[],activityUnsub=null;
+async function logActivity(action,detail){
+ try{
+  await addDoc(collection(db,"activity_logs"),{
+   action,detail:detail||"",
+   adminUid:currentUser?.uid||"",
+   adminName:profile?.fullName||currentUser?.email||"Unknown admin",
+   adminPhotoURL:profile?.photoURL||"",
+   timestamp:new Date().toISOString()
+  });
+ }catch(e){toast("Note: activity log entry failed to save: "+e.message)}
+}
+function subscribeActivity(){
+ if(activityUnsub)return;
+ try{
+  const q=query(collection(db,"activity_logs"),orderBy("timestamp","desc"),limit(200));
+  activityUnsub=onSnapshot(q,s=>{activityLogs=s.docs.map(d=>({id:d.id,...d.data()}));if(!document.querySelector("#activityView").classList.contains("hidden"))renderActivity()},
+   e=>{document.querySelector("#activityList").innerHTML=`<p class="muted">Could not load activity log: ${esc(e.message)}</p>`});
+ }catch(e){/* ignore */}
+}
+function unsubscribeActivity(){if(activityUnsub){activityUnsub();activityUnsub=null}activityLogs=[]}
+function renderActivity(){
+ const box=document.querySelector("#activityList");
+ if(!activityLogs.length){box.innerHTML=`<p class="muted">No activity recorded yet.</p>`;return}
+ box.innerHTML=activityLogs.map(l=>{
+  return `<div class="log-item"><div class="avatar avatar-sm log-avatar">${l.adminPhotoURL?`<img src="${esc(l.adminPhotoURL)}" alt="">`:esc(initials(l.adminName))}</div>
+   <div class="log-body"><div class="log-action">${esc(l.adminName||"Unknown admin")} — ${esc(l.action||"")}</div>
+   ${l.detail?`<div class="log-detail">${esc(l.detail)}</div>`:""}
+   <div class="log-time">${time(l.timestamp)}</div></div></div>`;
+ }).join("");
+}
+
+/* ---------- view switching ---------- */
+const VIEWS=["dashboard","messages","content","activity","settings"];
+function showView(name){
+ VIEWS.forEach(v=>document.querySelector("#"+v+"View").classList.toggle("hidden",v!==name));
+ document.querySelectorAll(".dropitem[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
+ closeDropdown();
+ if(name==="dashboard"){renderStats();renderRecent();renderDashStatus()}
+ if(name==="activity")renderActivity();
+ if(name==="settings")updateNameFieldState();
+ window.scrollTo({top:0,behavior:"instant" in window?"instant":"auto"});
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+
+/* ---------- dropdown menu ---------- */
+const menuBtn=document.querySelector("#menuBtn"),dropdown=document.querySelector("#dropdown");
+function closeDropdown(){dropdown.classList.add("hidden");menuBtn.setAttribute("aria-expanded","false")}
+menuBtn.onclick=(e)=>{e.stopPropagation();const open=!dropdown.classList.contains("hidden");dropdown.classList.toggle("hidden");menuBtn.setAttribute("aria-expanded",String(!open))};
+document.addEventListener("click",e=>{if(!dropdown.classList.contains("hidden")&&!dropdown.contains(e.target)&&e.target!==menuBtn)closeDropdown()});
+
+/* ---------- profile / onboarding / settings ---------- */
+const MAX_NAME_CHANGES=1; // name may be changed at most once after initial setup, for log accountability
+function nameFieldError(msg){
+ const el=document.querySelector("#nameFieldError");
+ if(!msg){el.classList.add("hidden");el.textContent="";document.querySelector("#fullNameInput").classList.remove("invalid");document.querySelector("#fullNameConfirm").classList.remove("invalid");return}
+ el.textContent=msg;el.classList.remove("hidden");
+}
+function updateNameFieldState(){
+ const changes=profile?.nameChangeCount||0,locked=changes>=MAX_NAME_CHANGES;
+ const nameInput=document.querySelector("#fullNameInput"),confirmWrap=document.querySelector("#nameConfirmWrap"),lockNote=document.querySelector("#nameLockNote");
+ nameInput.disabled=locked;
+ confirmWrap.classList.toggle("hidden",locked);
+ lockNote.classList.toggle("hidden",!locked);
+ document.querySelector("#fullNameConfirm").value="";
+ nameFieldError("");
+}
+function applyProfileToUI(){
+ const name=profile?.fullName||"",photo=profile?.photoURL||"";
+ setAvatarEl(document.querySelector("#avatarSmall"),name,photo);
+ document.querySelector("#menuName").textContent=name?name.split(" ")[0]:"Account";
+ document.querySelector("#dashGreeting").textContent=name?`Welcome back, ${name.split(" ")[0]}`:"Dashboard";
+ setAvatarEl(document.querySelector("#avatarPreview"),name,photo);
+ document.querySelector("#fullNameInput").value=name;
+ document.querySelector("#emailDisplay").value=currentUser?.email||"";
+ pendingSettingsPhoto=undefined;
+ updateNameFieldState();
+}
+/* ---------- suspension / approval gate ----------
+   Every account gets an admins/{uid} doc with isAdmin:false the first time it
+   logs in successfully. The app never sets isAdmin to true anywhere — that can
+   only be flipped by a firm administrator directly in the Firebase console.
+   The doc is watched live, so if an administrator suspends (isAdmin:false) an
+   account while it's signed in, this admin page locks immediately. */
+function showOnly(sectionId){
+ login.classList.toggle("hidden",sectionId!=="login");
+ onboarding.classList.toggle("hidden",sectionId!=="onboarding");
+ suspended.classList.toggle("hidden",sectionId!=="suspended");
+ app.classList.toggle("hidden",sectionId!=="app");
+}
+function teardownApp(){
+ if(unsubscribe){unsubscribe();unsubscribe=null}
+ unsubscribeContent();
+ unsubscribeActivity();
+ appStarted=false;
+}
+function showSuspended(){
+ teardownApp();
+ document.querySelector("#suspendedEmail").textContent=currentUser?.email||"this account";
+ showOnly("suspended");
+}
+async function ensureProfileDoc(user){
+ if(creatingProfileDoc)return;
+ creatingProfileDoc=true;
+ try{
+  await setDoc(doc(db,"admins",user.uid),{isAdmin:false,email:user.email||"",createdAt:new Date().toISOString()},{merge:true});
+ }catch(e){toast("Could not initialize your account: "+e.message)}
+ creatingProfileDoc=false;
+}
+function subscribeProfile(user){
+ if(profileUnsub)return;
+ profileUnsub=onSnapshot(doc(db,"admins",user.uid),snap=>{
+  if(!snap.exists()){
+   ensureProfileDoc(user); // this write triggers the listener again once it lands
+   showSuspended();
+   return;
+  }
+  profile={id:user.uid,nameChangeCount:0,isAdmin:false,...snap.data()};
+  if(profile.isAdmin!==true){
+   showSuspended();
+   return;
+  }
+  if(!profile.fullName){
+   teardownApp();
+   pendingOnboardPhoto="";
+   document.querySelector("#onboardName").value="";
+   setAvatarEl(document.querySelector("#onboardAvatarPreview"),"","");
+   showOnly("onboarding");
+   return;
+  }
+  applyProfileToUI();
+  if(!appStarted){appStarted=true;startApp()}
+ },e=>{toast("Could not load your account: "+e.message)});
+}
+function unsubscribeProfile(){if(profileUnsub){profileUnsub();profileUnsub=null}}
+document.querySelector("#suspendedLogout").onclick=()=>signOut(auth);
+document.querySelector("#onboardPhotoInput").addEventListener("change",async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{pendingOnboardPhoto=await fileToResizedDataURL(f);setAvatarEl(document.querySelector("#onboardAvatarPreview"),document.querySelector("#onboardName").value,pendingOnboardPhoto)}
+ catch(err){toast(err.message)}
+});
+document.querySelector("#onboardForm").onsubmit=async e=>{
+ e.preventDefault();
+ const name=document.querySelector("#onboardName").value.trim();
+ if(!name){toast("Please enter your full name to continue.");return}
+ const payload={fullName:name,photoURL:pendingOnboardPhoto||"",email:currentUser?.email||"",nameChangeCount:0};
+ try{
+  await setDoc(doc(db,"admins",currentUser.uid),payload,{merge:true});
+  toast("Profile saved. Welcome!");
+  logActivity("Set up their admin profile",name);
+  // the live profile listener (subscribeProfile) picks up fullName and opens the app
+ }catch(err){toast("Could not save profile: "+err.message)}
+};
+document.querySelector("#photoInput").addEventListener("change",async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{pendingSettingsPhoto=await fileToResizedDataURL(f);setAvatarEl(document.querySelector("#avatarPreview"),document.querySelector("#fullNameInput").value,pendingSettingsPhoto)}
+ catch(err){toast(err.message)}
+});
+document.querySelector("#fullNameInput").addEventListener("input",()=>nameFieldError(""));
+document.querySelector("#fullNameConfirm").addEventListener("input",()=>nameFieldError(""));
+document.querySelector("#removePhoto").onclick=()=>{
+ pendingSettingsPhoto="";
+ setAvatarEl(document.querySelector("#avatarPreview"),document.querySelector("#fullNameInput").value,"");
+};
+document.querySelector("#profileForm").onsubmit=async e=>{
+ e.preventDefault();
+ const nameInput=document.querySelector("#fullNameInput"),confirmInput=document.querySelector("#fullNameConfirm");
+ const locked=nameInput.disabled,newName=nameInput.value.trim(),oldName=profile?.fullName||"";
+ const nameChanged=!locked&&newName!==oldName;
+ nameFieldError("");
+ if(!locked){
+  if(!newName){nameFieldError("Full name can't be empty.");nameInput.classList.add("invalid");return}
+  if(nameChanged&&newName!==confirmInput.value.trim()){nameFieldError("The two name fields don't match. Please re-type your name to confirm the change.");confirmInput.classList.add("invalid");return}
+ }
+ const payload={};
+ if(!locked)payload.fullName=newName;
+ if(pendingSettingsPhoto!==undefined)payload.photoURL=pendingSettingsPhoto;
+ if(nameChanged)payload.nameChangeCount=(profile?.nameChangeCount||0)+1;
+ if(!Object.keys(payload).length){toast("Nothing to update.");return}
+ if(nameChanged&&!confirm(`You can only change your name ${MAX_NAME_CHANGES===1?"once":MAX_NAME_CHANGES+" times"} after initial setup, and this will use that change. Save "${newName}" as your permanent display name?`))return;
+ try{
+  await setDoc(doc(db,"admins",currentUser.uid),payload,{merge:true});
+  const parts=[];
+  if(nameChanged)parts.push(`name: "${oldName}" → "${newName}"`);
+  if(pendingSettingsPhoto!==undefined)parts.push(pendingSettingsPhoto?"updated profile photo":"removed profile photo");
+  profile={...profile,...payload};
+  applyProfileToUI();
+  toast("Settings saved.");
+  if(parts.length)logActivity("Updated their profile",parts.join("; "));
+ }catch(err){toast("Could not save: "+err.message)}
+};
+document.querySelector("#deleteProfileBtn").onclick=async()=>{
+ if(!confirm("Delete your saved name and photo? You'll be asked to set them up again right away. This does not affect your admin approval status."))return;
+ try{
+  await logActivity("Deleted their profile info",profile?.fullName||"");
+  await updateDoc(doc(db,"admins",currentUser.uid),{fullName:"",photoURL:"",nameChangeCount:0});
+  toast("Profile info deleted.");
+  // the live profile listener (subscribeProfile) sees the empty fullName and re-opens onboarding
+ }catch(err){toast("Could not delete: "+err.message)}
+};
+
+/* ---------- dashboard status/recent ---------- */
+function renderDashStatus(){
+ const s=document.querySelector("#dashStatus");
+ if(dataState.phase==="loading"){s.className="datastatus";s.textContent="Connecting to Firestore…";s.classList.remove("hidden");return}
+ if(dataState.phase==="error"){s.className="datastatus err";s.textContent="⚠ Can't reach the messages collection: "+dataState.error+".";s.classList.remove("hidden");return}
+ if(all.length===0){s.className="datastatus warn";s.textContent="Connected — no conversations have been received from the website yet.";s.classList.remove("hidden");return}
+ s.classList.add("hidden");
+}
+function renderRecent(){
+ const box=document.querySelector("#recentList");
+ const unread=conversations().filter(t=>t.msgs.some(m=>isClient(m)&&!m.read)).slice(0,5);
+ if(!unread.length){box.innerHTML=`<p class="muted" style="margin:6px 0">No unread client messages.</p>`;return}
+ box.innerHTML=unread.map(t=>{
+  const last=t.msgs.filter(isClient).at(-1);
+  return `<div class="recent-item" data-id="${esc(t.id)}"><div><b style="color:var(--navy);display:block;font-size:13px">Website visitor</b><small class="muted">${esc(last?.text?.slice(0,80)||"")}</small></div><span class="badge">new</span></div>`;
+ }).join("");
+ box.querySelectorAll(".recent-item").forEach(el=>el.onclick=()=>{showView("messages");openThread(el.dataset.id)});
+}
+
+/* ---------- messages ---------- */
+function renderStatus(){
+ const s=document.querySelector("#dataStatus");
+ if(dataState.phase==="loading"){s.className="datastatus";s.textContent="Connecting to Firestore…";s.classList.remove("hidden");return}
+ if(dataState.phase==="error"){
+  s.className="datastatus err";
+  s.textContent="⚠ Can't reach the messages collection: "+dataState.error+". If this says 'permission-denied', the signed-in account's Firestore security rules don't allow reading fel_messages.";
+  s.classList.remove("hidden");return;
+ }
+ if(all.length===0){s.className="datastatus warn";s.textContent="Connected to Firestore, but the fel_messages collection is empty — no conversations have been received from the website yet.";s.classList.remove("hidden");return}
+ const allMsgs=all.flatMap(c=>Array.isArray(c.messages)?c.messages:[]);
+ if(allMsgs.length===0){
+  s.className="datastatus warn";
+  s.textContent=`Connected — ${all.length} conversation document(s) found, but none contain a "messages" array. Check that the website is writing to doc.messages via arrayUnion, not to a top-level field.`;
+  s.classList.remove("hidden");return;
+ }
+ const clientCount=allMsgs.filter(isClient).length;
+ if(clientCount===0){
+  const fromValues=[...new Set(allMsgs.map(m=>m.from))];
+  s.className="datastatus warn";
+  s.textContent=`Connected — ${allMsgs.length} message(s) loaded, but none have from:"user" (what this page looks for as a client message). Actual "from" values found: ${fromValues.map(v=>JSON.stringify(v)).join(", ")||"(none)"}. The website is likely writing a different value — update isClient() to match it.`;
+  s.classList.remove("hidden");return;
+ }
+ s.classList.add("hidden");
+}
 function conversations(){
  return all.map(c=>({
    id:c.id,
@@ -169,13 +652,18 @@ function renderThreads(){
  }).join(""):`<div class="empty">No website messages found.</div>`;
  box.querySelectorAll(".thread").forEach(x=>x.onclick=()=>openThread(x.dataset.id));
 }
+function msgKey(m){return m.id||(m.timestamp+"|"+m.text)}
 function openThread(id){
  const t=conversations().find(x=>x.id===id);if(!t)return;selected=t;renderThreads();
+ document.querySelector("#msgLayout").classList.add("conv-open");
  document.querySelector("#conversation").innerHTML=`
-  <div class="convhead"><div><div class="eyebrow">Website conversation</div><h2 style="margin:5px 0;color:var(--navy)">${esc(t.id)}</h2><div class="muted">Conversation ID used by the website</div></div><span class="filter active">LIVE</span></div>
-  <div id="messages" class="messages">${t.msgs.map(m=>`<div class="bubble ${m.from==="admin"?"team":"client"}">${esc(m.text)}<div class="meta">${m.from==="admin"?"FEL & Associates team":"Website visitor"} · ${time(m.timestamp)}</div></div>`).join("")}</div>
+  <div class="convhead"><button class="backbtn" id="backToInbox">← Back</button><div><div class="eyebrow">Website conversation</div><h2 style="margin:5px 0;color:var(--navy);font-size:18px">${esc(t.id)}</h2><div class="muted">Conversation ID used by the website</div></div><div class="convhead-actions"><button id="deleteConv" class="btn btn-danger-sm">Delete conversation</button></div></div>
+  <div id="messages" class="messages">${t.msgs.map(m=>`<div class="bubble ${m.from==="admin"?"team":"client"}">${esc(m.text)}<div class="meta">${m.from==="admin"?"FEL & Associates team":"Website visitor"} · ${time(m.timestamp)} · <button class="msgdel" data-mid="${esc(msgKey(m))}">Delete</button></div></div>`).join("")}</div>
   <div class="reply"><textarea id="reply" placeholder="Reply to the client on the website…"></textarea><button id="send" class="btn primary">Send reply</button></div>`;
  document.querySelector("#send").onclick=sendReply;
+ document.querySelector("#backToInbox").onclick=()=>document.querySelector("#msgLayout").classList.remove("conv-open");
+ document.querySelector("#deleteConv").onclick=()=>deleteConversation(t.id);
+ document.querySelectorAll(".msgdel").forEach(b=>b.onclick=()=>deleteMessage(t.id,b.dataset.mid));
  const box=document.querySelector("#messages");box.scrollTop=box.scrollHeight;
  markRead(id);
 }
@@ -184,18 +672,46 @@ async function markRead(id){
  if(!original||!Array.isArray(original.messages))return;
  if(!original.messages.some(m=>isClient(m)&&!m.read))return;
  const updated=original.messages.map(m=>isClient(m)&&!m.read?{...m,read:true}:m);
- try{await updateDoc(doc(db,"fel_messages",id),{messages:updated})}catch(e){/* likely missing write permission; badge simply won't clear */}
+ try{
+  await updateDoc(doc(db,"fel_messages",id),{messages:updated});
+  logActivity("Marked client messages as read",`Conversation ${id}`);
+ }catch(e){/* likely missing write permission; badge simply won't clear */}
 }
 async function sendReply(){
  const input=document.querySelector("#reply"),text=input.value.trim();if(!text||!selected)return;
  const message={id:Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,6),text,deviceId:"admin",conversationId:selected.id,timestamp:new Date().toISOString(),from:"admin",read:false};
  try{
    await setDoc(doc(db,"fel_messages",selected.id),{messages:arrayUnion(message),lastUpdated:message.timestamp},{merge:true});
-   input.value="";toast("Reply sent to the website conversation.");openThread(selected.id);
+   input.value="";toast("Reply sent to the website conversation.");
+   logActivity("Sent a reply",`Conversation ${selected.id}: "${text.slice(0,80)}"`);
+   openThread(selected.id);
  }catch(e){toast("Could not send reply: "+e.message)}
 }
+async function deleteMessage(conversationId,key){
+ if(!confirm("Delete this message? This cannot be undone."))return;
+ const original=all.find(c=>c.id===conversationId);
+ if(!original||!Array.isArray(original.messages))return;
+ const target=original.messages.find(m=>msgKey(m)===key);
+ const updated=original.messages.filter(m=>msgKey(m)!==key);
+ try{
+  await updateDoc(doc(db,"fel_messages",conversationId),{messages:updated});
+  toast("Message deleted.");
+  logActivity("Deleted a message",`Conversation ${conversationId}: "${(target?.text||"").slice(0,80)}"`);
+ }catch(e){toast("Could not delete: "+e.message)}
+}
+async function deleteConversation(conversationId){
+ if(!confirm("Delete this entire conversation and all its messages? This cannot be undone."))return;
+ try{
+  await deleteDoc(doc(db,"fel_messages",conversationId));
+  toast("Conversation deleted.");
+  logActivity("Deleted a conversation",`Conversation ${conversationId}`);
+  selected=null;
+  document.querySelector("#msgLayout").classList.remove("conv-open");
+  document.querySelector("#conversation").innerHTML=`<div class="empty"><div><div style="font-size:40px;color:var(--gold)">⚖</div><b>Select a conversation</b><div>Client messages from the website will appear here.</div></div></div>`;
+ }catch(e){toast("Could not delete conversation: "+e.message)}
+}
 
-// --- Website Content: feeds the Team / Gallery / Testimonials / Insights sections on the live site ---
+/* ---------- Website Content: feeds Team / Gallery / Testimonials / Insights ---------- */
 const CONTENT_TYPES=[
  {key:"team",label:"Team",collection:"team",titleField:"name",fields:[
    {name:"imageUrl",label:"Photo URL",type:"text"},
@@ -241,7 +757,7 @@ function renderContentForm(){
       ?`<textarea name="${f.name}" ${f.required?"required":""}>${editing?esc(editing[f.name]??""):""}</textarea>`
       :`<input name="${f.name}" type="${f.type}" ${f.required?"required":""} value="${editing?esc(editing[f.name]??""):""}">`
    }`).join("")}
-   <div style="display:flex;gap:10px;margin-top:18px">
+   <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
     <button type="submit" class="btn primary">${editing?"Save changes":"Add to website"}</button>
     ${editing?'<button type="button" id="cancelEdit" class="btn secondary">Cancel</button>':""}
    </div>
@@ -259,10 +775,13 @@ async function submitContentForm(e){
  try{
   if(editingId){
    await updateDoc(doc(db,cfg.collection,editingId),payload);
-   toast("Updated on the website.");editingId=null;
+   toast("Updated on the website.");
+   logActivity("Edited website content",`${cfg.label}: ${payload[cfg.titleField]||editingId}`);
+   editingId=null;
   }else{
    await addDoc(collection(db,cfg.collection),payload);
    toast("Added to the website.");
+   logActivity("Added website content",`${cfg.label}: ${payload[cfg.titleField]||""}`);
   }
   renderContentForm();
  }catch(err){toast("Could not save: "+err.message)}
@@ -293,8 +812,13 @@ function renderContentList(){
   </div>`).join("")}</div>`;
  box.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>{editingId=b.dataset.edit;renderContentForm();window.scrollTo({top:0,behavior:"smooth"})});
  box.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{
+  const item=(contentItems[contentType]||[]).find(i=>i.id===b.dataset.del);
   if(!confirm("Remove this item from the live website?"))return;
-  try{await deleteDoc(doc(db,cfg.collection,b.dataset.del));toast("Removed from the website.")}catch(err){toast("Could not delete: "+err.message)}
+  try{
+   await deleteDoc(doc(db,cfg.collection,b.dataset.del));
+   toast("Removed from the website.");
+   logActivity("Deleted website content",`${cfg.label}: ${item?(item[cfg.titleField]||item.id):b.dataset.del}`);
+  }catch(err){toast("Could not delete: "+err.message)}
  });
 }
 function subscribeContent(){
@@ -308,12 +832,6 @@ function subscribeContent(){
 }
 function unsubscribeContent(){Object.values(contentUnsub).forEach(u=>u&&u());contentUnsub={}}
 renderContentTabs();renderContentForm();renderContentList();
-document.querySelectorAll("#mainTabs .tab").forEach(b=>b.onclick=()=>{
- document.querySelectorAll("#mainTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");
- const tab=b.dataset.tab;
- document.querySelector("#messagesView").classList.toggle("hidden",tab!=="messages");
- document.querySelector("#contentView").classList.toggle("hidden",tab!=="content");
-});
 
 document.querySelector("#loginForm").onsubmit=async e=>{e.preventDefault();err.classList.add("hidden");try{await signInWithEmailAndPassword(auth,document.querySelector("#email").value.trim(),document.querySelector("#password").value)}catch(e){showError("Sign-in failed. Check the username and password.")}};
 document.querySelector("#forgot").onclick=async()=>{const e=document.querySelector("#email").value.trim();if(!e)return showError("Enter your username/email first.");try{await sendPasswordResetEmail(auth,e);showError("Password reset email sent.");}catch(x){showError("Could not send the reset email.")}};
@@ -321,22 +839,35 @@ document.querySelector("#logout").onclick=()=>signOut(auth);
 document.querySelector("#search").oninput=renderThreads;
 document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderThreads()});
 
-const firebaseApp=getApps().length?getApps()[0]:initializeApp(firebaseConfig);auth=getAuth(firebaseApp);db=getFirestore(firebaseApp);
-onAuthStateChanged(auth,user=>{
- if(!user){login.classList.remove("hidden");app.classList.add("hidden");if(unsubscribe)unsubscribe();unsubscribeContent();return}
- login.classList.add("hidden");app.classList.remove("hidden");
- dataState={phase:"loading",error:null};renderStatus();
+function startApp(){
+ showOnly("app");
+ showView("dashboard");
+ dataState={phase:"loading",error:null};renderStatus();renderDashStatus();
  subscribeContent();
+ subscribeActivity();
  unsubscribe=onSnapshot(collection(db,"fel_messages"),s=>{
    all=s.docs.map(d=>({id:d.id,...d.data()}));
    dataState={phase:"loaded",error:null};
-   renderStats();renderThreads();renderStatus();
+   renderStats();renderThreads();renderStatus();renderDashStatus();renderRecent();
    if(selected)openThread(selected.id);
  },e=>{
    dataState={phase:"error",error:e.code||e.message};
-   renderStatus();
+   renderStatus();renderDashStatus();
    toast("Firestore error: "+e.message);
  });
+}
+
+const firebaseApp=getApps().length?getApps()[0]:initializeApp(firebaseConfig);auth=getAuth(firebaseApp);db=getFirestore(firebaseApp);
+onAuthStateChanged(auth,user=>{
+ if(!user){
+  currentUser=null;profile=null;
+  unsubscribeProfile();
+  teardownApp();
+  showOnly("login");
+  return;
+ }
+ currentUser=user;
+ subscribeProfile(user);
 });
 </script>
 </body>
