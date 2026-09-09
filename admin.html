@@ -169,10 +169,10 @@ input.invalid{border-color:#c0392b}
  <div class="login-card">
   <div class="brand"><span class="mark">⚖</span><span>FEL & ASSOCIATES PC<small>LEGAL • ADVOCACY • COUNSEL</small></span></div>
   <div style="margin-top:26px" class="eyebrow">Admin</div>
-  <p class="muted">Sign in.</p>
+  <p class="muted">Sign in to your admin account.</p>
   <form id="loginForm">
-   <label for="email">Username</label><input id="email" type="email" autocomplete="username" placeholder="Type..." required>
-   <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Type..." required>
+   <label for="email">Email address</label><input id="email" type="email" autocomplete="username" placeholder="you@felassociates.com" required>
+   <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
    <button class="btn primary" type="submit">Sign in</button>
   </form>
   <button id="forgot" class="link">Forgot password?</button>
@@ -207,7 +207,7 @@ input.invalid{border-color:#c0392b}
  <div class="login-card">
   <div class="eyebrow">Account pending</div>
   <h1 style="font-size:26px">Access suspended</h1>
-  <p class="muted">Your login was successful, but this account hasn't been approved for admin access yet. Ask a firm administrator to approve <b id="suspendedEmail"></b> in the system before you can view or use this admin page.</p>
+  <p class="muted">You're signed in, but this account isn't approved for admin access yet. Ask a firm administrator to approve <b id="suspendedEmail"></b> before you can use this page.</p>
   <button id="suspendedLogout" class="btn secondary" style="width:100%;margin-top:16px">Sign out</button>
  </div>
 </div>
@@ -344,6 +344,39 @@ function esc(x){return String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 function time(x){try{return new Date(x).toLocaleString()}catch{return ""}}
 function isClient(m){return m.from==="user"}
 function initials(name){return String(name||"?").trim().split(/\s+/).slice(0,2).map(w=>w[0]?.toUpperCase()||"").join("")||"?"}
+/* New-admin review window: 72 hours of restricted access until a firm
+   administrator approves the account. Approval ends the window immediately
+   (see endReviewPeriod), so a later revocation blocks access on the spot
+   instead of reopening a fresh review period. */
+const REVIEW_HOURS = 72;
+const REVIEW_MS = REVIEW_HOURS * 60 * 60 * 1000;
+
+function getReviewStart() {
+  return localStorage.getItem('fel_review_start');
+}
+
+function setReviewStart() {
+  localStorage.setItem('fel_review_start', Date.now().toString());
+  localStorage.removeItem('fel_review_violations');
+}
+
+// Ends the review window right now: used on approval, and to force-suspend
+// an account that keeps attempting restricted actions during review.
+function endReviewPeriod() {
+  localStorage.setItem('fel_review_start', '0');
+}
+
+function isReviewPeriodActive() {
+  const start = getReviewStart();
+  if (!start) return false;
+  return Date.now() - parseInt(start, 10) < REVIEW_MS;
+}
+
+function reviewMsRemaining() {
+  const start = getReviewStart();
+  if (!start) return 0;
+  return Math.max(0, REVIEW_MS - (Date.now() - parseInt(start, 10)));
+}
 
 /* ---------- image resize helper (avoids needing Firebase Storage rules) ---------- */
 function fileToResizedDataURL(file,maxDim=220,quality=.82){
@@ -482,30 +515,43 @@ async function ensureProfileDoc(user){
  }catch(e){toast("Could not initialize your account: "+e.message)}
  creatingProfileDoc=false;
 }
-function subscribeProfile(user){
- if(profileUnsub)return;
- profileUnsub=onSnapshot(doc(db,"admins",user.uid),snap=>{
-  if(!snap.exists()){
-   ensureProfileDoc(user); // this write triggers the listener again once it lands
-   showSuspended();
-   return;
-  }
-  profile={id:user.uid,nameChangeCount:0,isAdmin:false,...snap.data()};
-  if(profile.isAdmin!==true){
-   showSuspended();
-   return;
-  }
-  if(!profile.fullName){
-   teardownApp();
-   pendingOnboardPhoto="";
-   document.querySelector("#onboardName").value="";
-   setAvatarEl(document.querySelector("#onboardAvatarPreview"),"","");
-   showOnly("onboarding");
-   return;
-  }
-  applyProfileToUI();
-  if(!appStarted){appStarted=true;startApp()}
- },e=>{toast("Could not load your account: "+e.message)});
+function subscribeProfile(user) {
+  if (profileUnsub) return;
+  profileUnsub = onSnapshot(doc(db, "admins", user.uid), snap => {
+    if (!snap.exists()) {
+      ensureProfileDoc(user);
+      setReviewStart(); // Start the 72-hour timer
+      teardownApp();
+      pendingOnboardPhoto = "";
+      document.querySelector("#onboardName").value = "";
+      setAvatarEl(document.querySelector("#onboardAvatarPreview"), "", "");
+      showOnly("onboarding");
+      return;
+    }
+    profile = { id: user.uid, nameChangeCount: 0, isAdmin: false, ...snap.data() };
+
+    // Approved: the review window is over for good. If an administrator
+    // later revokes approval, the account is suspended immediately below
+    // instead of falling back into a fresh review period.
+    if (profile.isAdmin === true) endReviewPeriod();
+
+    // Suspend once isAdmin is explicitly false and the review window (if any) has ended.
+    if (profile.isAdmin === false && !isReviewPeriodActive()) {
+      showSuspended();
+      return;
+    }
+    
+    if (!profile.fullName) {
+      teardownApp();
+      pendingOnboardPhoto = "";
+      document.querySelector("#onboardName").value = "";
+      setAvatarEl(document.querySelector("#onboardAvatarPreview"), "", "");
+      showOnly("onboarding");
+      return;
+    }
+    applyProfileToUI();
+    if (!appStarted) { appStarted = true; startApp(); }
+  }, e => { toast("Could not load your account: " + e.message); });
 }
 function unsubscribeProfile(){if(profileUnsub){profileUnsub();profileUnsub=null}}
 document.querySelector("#suspendedLogout").onclick=()=>signOut(auth);
@@ -534,11 +580,13 @@ document.querySelector("#photoInput").addEventListener("change",async e=>{
 document.querySelector("#fullNameInput").addEventListener("input",()=>nameFieldError(""));
 document.querySelector("#fullNameConfirm").addEventListener("input",()=>nameFieldError(""));
 document.querySelector("#removePhoto").onclick=()=>{
+ if(isBlockedForReview()){handleBlockedAction("Removing your profile photo");return}
  pendingSettingsPhoto="";
  setAvatarEl(document.querySelector("#avatarPreview"),document.querySelector("#fullNameInput").value,"");
 };
 document.querySelector("#profileForm").onsubmit=async e=>{
  e.preventDefault();
+ if(isBlockedForReview()){handleBlockedAction("Changing your profile name");return}
  const nameInput=document.querySelector("#fullNameInput"),confirmInput=document.querySelector("#fullNameConfirm");
  const locked=nameInput.disabled,newName=nameInput.value.trim(),oldName=profile?.fullName||"";
  const nameChanged=!locked&&newName!==oldName;
@@ -565,6 +613,7 @@ document.querySelector("#profileForm").onsubmit=async e=>{
  }catch(err){toast("Could not save: "+err.message)}
 };
 document.querySelector("#deleteProfileBtn").onclick=async()=>{
+ if(isBlockedForReview()){handleBlockedAction("Deleting your profile information");return}
  if(!confirm("Delete your saved name and photo? You'll be asked to set them up again right away. This does not affect your admin approval status."))return;
  try{
   await logActivity("Deleted their profile info",profile?.fullName||"");
@@ -678,6 +727,7 @@ async function markRead(id){
  }catch(e){/* likely missing write permission; badge simply won't clear */}
 }
 async function sendReply(){
+ if(isBlockedForReview()){handleBlockedAction("Sending a reply to a client");return}
  const input=document.querySelector("#reply"),text=input.value.trim();if(!text||!selected)return;
  const message={id:Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,6),text,deviceId:"admin",conversationId:selected.id,timestamp:new Date().toISOString(),from:"admin",read:false};
  try{
@@ -688,6 +738,7 @@ async function sendReply(){
  }catch(e){toast("Could not send reply: "+e.message)}
 }
 async function deleteMessage(conversationId,key){
+ if(isBlockedForReview()){handleBlockedAction("Deleting a message");return}
  if(!confirm("Delete this message? This cannot be undone."))return;
  const original=all.find(c=>c.id===conversationId);
  if(!original||!Array.isArray(original.messages))return;
@@ -700,6 +751,7 @@ async function deleteMessage(conversationId,key){
  }catch(e){toast("Could not delete: "+e.message)}
 }
 async function deleteConversation(conversationId){
+ if(isBlockedForReview()){handleBlockedAction("Deleting an entire conversation");return}
  if(!confirm("Delete this entire conversation and all its messages? This cannot be undone."))return;
  try{
   await deleteDoc(doc(db,"fel_messages",conversationId));
@@ -767,6 +819,7 @@ function renderContentForm(){
 }
 async function submitContentForm(e){
  e.preventDefault();
+ if(isBlockedForReview()){handleBlockedAction(editingId?"Editing website content":"Adding new website content");return}
  const cfg=cfgFor(contentType),data=new FormData(e.target),payload={};
  cfg.fields.forEach(f=>{
   let v=data.get(f.name);
@@ -812,6 +865,11 @@ function renderContentList(){
   </div>`).join("")}</div>`;
  box.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>{editingId=b.dataset.edit;renderContentForm();window.scrollTo({top:0,behavior:"smooth"})});
  box.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{
+  if(isBlockedForReview()){
+   const label=document.querySelector("#contentTabs .filter.active")?.textContent||"content";
+   handleBlockedAction(`Deleting ${label} content`);
+   return;
+  }
   const item=(contentItems[contentType]||[]).find(i=>i.id===b.dataset.del);
   if(!confirm("Remove this item from the live website?"))return;
   try{
@@ -869,6 +927,126 @@ onAuthStateChanged(auth,user=>{
  currentUser=user;
  subscribeProfile(user);
 });
+// === REVIEW COUNTDOWN REMINDER & BLOCKER ===
+
+const MAX_REVIEW_VIOLATIONS = 5; // repeated attempts during review auto-suspend the account
+
+// Check if user is in review period and should be blocked from serious actions
+function isBlockedForReview() {
+  return profile?.isAdmin === false && isReviewPeriodActive();
+}
+
+// Get remaining time string
+function getRemainingTimeString() {
+  const ms = reviewMsRemaining();
+  if (ms <= 0) return "expired";
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  const parts = [];
+  if (days > 0) parts.push(`${days}d`);
+  if (days > 0 || hours > 0) parts.push(`${hours}h`);
+  parts.push(`${minutes}m`);
+  return parts.join(' ');
+}
+
+function reviewViolationCount() {
+  return parseInt(localStorage.getItem('fel_review_violations') || '0', 10);
+}
+function registerReviewViolation() {
+  const n = reviewViolationCount() + 1;
+  localStorage.setItem('fel_review_violations', n.toString());
+  return n;
+}
+// Repeated attempts to bypass the review window are treated as abuse:
+// end the window immediately and lock the account.
+function forceBlockForViolations() {
+  endReviewPeriod();
+  logActivity("Account auto-suspended", "Repeated attempts to perform restricted actions during the review period.");
+  showSuspended();
+}
+// Single entry point for every restricted action: counts the attempt and
+// either warns the user or, past the limit, suspends the account outright.
+function handleBlockedAction(action) {
+  const attempts = registerReviewViolation();
+  if (attempts >= MAX_REVIEW_VIOLATIONS) {
+    forceBlockForViolations();
+    return;
+  }
+  showReviewWarning(action, MAX_REVIEW_VIOLATIONS - attempts);
+}
+
+// Show warning modal for blocked actions
+function showReviewWarning(action, attemptsLeft) {
+  document.querySelector('#reviewWarningModal')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.id = 'reviewWarningModal';
+  overlay.style.zIndex = '100';
+
+  overlay.innerHTML = `
+    <div class="login-card" style="max-width:440px">
+      <div style="text-align:center;margin-bottom:16px">
+        <div style="font-size:48px;margin-bottom:8px">⏳</div>
+        <div class="eyebrow" style="color:#d6a63b">Account under review</div>
+      </div>
+      <h2 style="color:var(--deep);font-size:20px;margin:0 0 8px">Action blocked</h2>
+      <p style="color:var(--muted);font-size:14px;line-height:1.6">
+        <strong>${esc(action)}</strong> isn't allowed while your account is under review.
+      </p>
+      <div style="background:#fff8e6;border-radius:12px;padding:12px 16px;margin:12px 0;border:1px solid rgba(214,166,59,.3)">
+        <div style="font-size:13px;color:#7a5c10;text-align:center">⏱️ <strong>${getRemainingTimeString()}</strong> remaining in review</div>
+        <div style="font-size:11px;color:#7a5c10;text-align:center;margin-top:4px">Ask a firm administrator to approve your account early</div>
+      </div>
+      ${attemptsLeft <= 2 ? `<div style="font-size:12px;color:#9a3030;text-align:center;margin-top:-4px">${attemptsLeft} more attempt${attemptsLeft === 1 ? '' : 's'} and your account will be suspended automatically.</div>` : ''}
+      <button id="closeReviewWarning" class="btn secondary" style="width:100%;margin-top:12px">Understood</button>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  document.querySelector('#closeReviewWarning').onclick = () => overlay.remove();
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+}
+
+// Show toast reminder
+function showReviewReminder() {
+  if (!isBlockedForReview()) return;
+  
+  const lastShown = localStorage.getItem('fel_review_reminder_last');
+  if (lastShown) {
+    const elapsed = Date.now() - parseInt(lastShown);
+    if (elapsed < 60000) return;
+  }
+  localStorage.setItem('fel_review_reminder_last', Date.now().toString());
+  
+  const toast = document.querySelector("#toast");
+  toast.textContent = `⏳ Account under review: ${getRemainingTimeString()} remaining. Some actions are blocked.`;
+  toast.classList.remove("hidden");
+  
+  clearTimeout(window._reminderTimeout);
+  window._reminderTimeout = setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 8000);
+}
+
+// Restricted actions are guarded at the top of each handler itself (see
+// sendReply, deleteMessage, deleteConversation, submitContentForm, the
+// data-del handler, and the profile form/photo/delete handlers above) via
+// isBlockedForReview() + handleBlockedAction(). A single delegated listener
+// here would run after those handlers and be too late to stop them.
+
+// === BACKGROUND REMINDER ===
+setInterval(() => { if (isBlockedForReview()) showReviewReminder(); }, 120000); // poll every 2 min
+setTimeout(() => { if (isBlockedForReview()) showReviewReminder(); }, 3000); // on app load
+
+// Remind on navigation (view switches, opening a thread or recent item)
+document.addEventListener("click", e => {
+  if (e.target.closest(".thread, .recent-item, [data-view]")) {
+    setTimeout(() => { if (isBlockedForReview()) showReviewReminder(); }, 500);
+  }
+});
 </script>
 </body>
 </html>
+   
